@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ReportController extends AbstractController
 {
     /**
-     * @Route("/report")
+     * @Route("/report", name="report")
      */
     public function index(): Response
     {

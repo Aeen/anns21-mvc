@@ -10,13 +10,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AboutController extends AbstractController
 {
     /**
-     * @Route("/about")
+     * @Route("/about", name="about")
      */
     public function index(): Response
     {
-        /* return new Response(
-            '<html><body>Index</body></html>'
-        ); */
+
 
         return $this->render('pages\about.html.twig');
     }
