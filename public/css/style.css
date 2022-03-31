@@ -313,6 +313,9 @@ nav  li a:focus::after {
 
 @media (max-width: 750px) {
 
+    .logo img{
+        width: 75vw;
+    }
 
     .header-inside {
         display: grid;
@@ -372,10 +375,6 @@ nav  li a:focus::after {
 
     nav ul {
         display: grid;
-    }
-
-    .logo {
-        width: 75vw;
     }
 
     .footer-inside {
