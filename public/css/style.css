@@ -110,7 +110,14 @@ nav {
 }
 
 .report-text-l {
-    margin-right: 1vw;
+    padding-right: 1vw;
+    border-top: 1px dotted #914646;
+    border-right: 1px dotted #914646;
+}
+
+.report-text-r {
+    padding-left: 1vw;
+    border-top: 1px dotted #914646;
 }
 
 ul {
@@ -366,6 +373,7 @@ nav  li a:focus::after {
 
 .report-text-l {
     grid-column: 1 / 2;
+    border-right: none;
 }
 
 .report-text-r {
