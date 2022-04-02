@@ -92,12 +92,25 @@ nav {
     width: 75vw;
     margin: 1vw 0;
     display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.main-container-report h3 {
+    font-size: 0.9em;
+}
+
+.main-container-report p {
+    margin-top: 0;
 }
 
 .main-container-report h1 {
     font-family: 'Open Sans', sans-serif;
     font-size: 2.5em;
     margin-bottom: 2.5vh;
+}
+
+.report-text-l {
+    margin-right: 1vw;
 }
 
 ul {
@@ -366,6 +379,7 @@ nav  li a:focus::after {
 }
 
 .main-container-report {
+    grid-template-columns: 100%;
     text-align: center;
 }
 
