@@ -5,16 +5,7 @@
 <img src="img/nilsson-logo.png" alt="Annas logotype" width="200px">
 </div>
 
-<nav>
-        <ul>
-            <li>
-                <a href="{{ url('home') }}">Home</a>
-                <a href="{{ url('about') }}">About</a>
-                <a href="{{ url('report') }}">Report</a>
-            </li>
-        </ul>
-</nav>
-
+{{ include('./incl/navbar.html.twig') }}
 
 </div>
 </header>
