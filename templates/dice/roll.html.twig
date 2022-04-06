@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dice{% endblock %}
+
+{% block body %}
+
+<h1>{{ title }}</h1>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ path("dice-home") }}">Home</a></li> | 
+        <li><a href="{{ path("dice-hand-home") }}">Hand</a></li> | 
+        <li><a href="{{ path("dice-graphic-home") }}">Graphic</a></li>
+    </ul>
+</nav>
+
+<p>The dice is rolled {{ numRolls }} times.</p>
+
+<ul>
+    {% for roll in rolls %}
+        <li>{{ roll }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

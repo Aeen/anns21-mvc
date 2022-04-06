@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dice{% endblock %}
+
+{% block body %}
+
+<h1>{{ title }}</h1>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ path("dice-home") }}">Home</a></li> | 
+        <li><a href="{{ path("dice-hand-home") }}">Hand</a></li> | 
+        <li><a href="{{ path("dice-graphic-home") }}">Graphic</a></li>
+    </ul>
+</nav>
+
+<p>The dice is rolled once.</p>
+
+<p>Dice value = {{ die_value }} and its string representation is {{ die_as_string }}</p>
+
+<p><a href="{{ link_to_roll }}">Roll the dice five times</a>.</p>
+
+{% endblock %}

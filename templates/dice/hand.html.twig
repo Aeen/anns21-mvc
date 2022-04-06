@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dice hand{% endblock %}
+
+{% block body %}
+
+
+<h1>Dice hand</h1>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ path("dice-home") }}">Home</a></li> | 
+        <li><a href="{{ path("dice-hand-home") }}">Hand</a></li> | 
+        <li><a href="{{ path("dice-graphic-home") }}">Graphic</a></li>
+    </ul>
+</nav>
+
+<form method="post">
+    <fieldset>
+    <legend>A dice hand</legend>
+
+    <p>
+        <input type="submit" name="roll" value="Roll">
+        <input type="submit" name="add" value="Add">
+        <input type="submit" name="clear" value="Clear">
+    </p>
+
+    {{ include('block/flash-message.html.twig') }}
+
+    </fieldset>
+</form>
+
+{% endblock %}
