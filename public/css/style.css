@@ -88,6 +88,11 @@ nav {
     margin-bottom: 2.5vh;
 }
 
+.body-container {
+    width: 75vw;
+    margin: 1vw 0;
+}
+
 .main-container-report {
     width: 75vw;
     margin: 1vw 0;
@@ -313,6 +318,29 @@ nav li  a::after {
     transition: opacity 500ms, transform 500ms;
   }
 
+    /* Fade in */
+.navbar li  a::after {
+    background-color: #5CADA1;
+  }
+
+.navbar  li a:hover {
+    color: #5CADA1;;
+  }
+
+.navbar {
+    color: #2A6159;
+    font-size: 1.1em;
+}
+
+.navbar a {
+    color: #2A6159;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar ul {
+    margin: 1vh 0;
+}
+
 nav li a:hover::after,
 a:focus::after {
   opacity: 1;
@@ -330,6 +358,8 @@ nav  li a:hover::after,
 nav  li a:focus::after {
     transform: scale(1);
 }
+
+
 
 @media (max-width: 750px) {
 

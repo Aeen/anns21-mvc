@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ path("form-login") }}">Login</a></li> | 
+        <li><a href="{{ path("form-search") }}">Search</a></li> | 
+        <li><a href="{{ path("form-session") }}">Session</a></li>
+    </ul>
+</nav>
+
+<form>
+    <p>
+        <label>Search:
+            <input type="search" name="search" value="{{ search }}">
+        </label>
+    </p>
+</form>
+
+{% endblock %}
