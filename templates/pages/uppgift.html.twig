@@ -4,16 +4,18 @@
 
 {% block body %}
 
-<h1> Uppgifter </h1>
+    <h1> Uppgifter </h1>
 
-<nav class="navbar">
-    <ul>
-        <li><a href="{{ path("card") }}">Card</a></li>
-    </ul>
-</nav>
+    <p class="ovning"> Kmom02 </p>
 
-<div class="practice-img">
-    <img src="{{ asset("img/pexels-practice.jpg") }}" alt="Dekorativ bild"
-</div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ path("card-deck") }}">Card</a></li>
+        </ul>
+    </nav>
+
+    <div class="practice-img">
+        <img src="{{ asset("img/pexels-practice.jpg") }}" alt="Dekorativ bild">
+    </div>
 
 {% endblock %}

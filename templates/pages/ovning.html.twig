@@ -4,17 +4,19 @@
 
 {% block body %}
 
-<h1> Övningar </h1>
+    <h1> Övningar </h1>
 
-<nav class="navbar">
-    <ul>
-        <li><a href="{{ path("form-login") }}">Form</a></li> | 
-        <li><a href="{{ path("dice-home") }}">Dice</a></li>
-    </ul>
-</nav>
+    <p class="ovning"> Kmom02 </p>
 
-<div class="practice-img">
-    <img src="{{ asset("img/pexels-practice.jpg") }}" alt="Dekorativ bild"
-</div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ path("form-login") }}">Form</a></li> | 
+            <li><a href="{{ path("dice-home") }}">Dice</a></li>
+        </ul>
+    </nav>
+
+    <div class="practice-img">
+        <img src="{{ asset("img/pexels-practice.jpg") }}" alt="Dekorativ bild">
+    </div>
 
 {% endblock %}

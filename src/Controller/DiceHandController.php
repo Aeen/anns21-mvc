@@ -44,7 +44,7 @@ class DiceHandController extends AbstractController
             $hand->roll();
         } elseif ($add) {
             $hand->add(new \App\Dice\Dice());
-            //$hand->add(new \App\Dice\DiceGraphic());
+        //$hand->add(new \App\Dice\DiceGraphic());
         } elseif ($clear) {
             $hand = new \App\Dice\DiceHand();
         }

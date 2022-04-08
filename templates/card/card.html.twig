@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+
+    <h1> Card </h1>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ path("card-deck") }}">Card</a></li> | 
+            <li><a href="{{ path("dice-home") }}">Dead</a></li>
+        </ul>
+    </nav>
+
+<div class="card-container">
+
+{% if deck is defined %}
+        {% for cards in deck %}
+            <div class="cards">
+                <div class="{{ cards }} left-card">
+                    {{ cards }}
+                </div>
+                <div class="{{ cards }} right-card">
+                    {{ cards }}
+                </div>
+            </div>
+        {% endfor %}
+{% endif %}
+
+</div>
+
+{% endblock %}

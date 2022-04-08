@@ -220,6 +220,13 @@ ul {
     margin: 1vh;
 }
 
+p.ovning {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    text-align: center;
+    margin-bottom: 0;
+}
+
 .practice-img img {
     width: 100%;
     height: 25vh;
@@ -366,12 +373,41 @@ nav  li a:focus::after {
     transform: scale(1);
 }
 
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cards {
+    display: grid;
+    align-content: space-between;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 50px;
+    height: 90px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.left-card{
+    text-align: left;
+}
+.right-card{
+    text-align: left;
+    -webkit-transform: scale(-1, -1);
+    transform: scale(-1, -1);
+}
+
+.♥, .♦ {
+    color: red;
+}
 
 
-@media (max-width: 750px) {
+@media (max-width: 900px) {
 
     .logo img{
-        width: 75vw;
+        width: 50vw;
     }
 
     .header-inside {
@@ -431,6 +467,11 @@ nav  li a:focus::after {
 }
 
 @media (max-width: 500px) {
+
+    .logo img{
+        width: 75vw;
+    }
+
 
     nav ul {
         display: grid;
