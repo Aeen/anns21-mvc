@@ -6,13 +6,8 @@
 
 <h1>{{ title }}</h1>
 
-<nav class="navbar">
-    <ul>
-        <li><a href="{{ path("dice-home") }}">Home</a></li> | 
-        <li><a href="{{ path("dice-hand-home") }}">Hand</a></li> | 
-        <li><a href="{{ path("dice-graphic-home") }}">Graphic</a></li>
-    </ul>
-</nav>
+{{ include('./dice/navbar.html.twig') }}
+
 
 <p>The dice is rolled {{ numRolls }} times.</p>
 

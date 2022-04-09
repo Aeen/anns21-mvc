@@ -2,6 +2,11 @@
 
 namespace App\Card;
 
+//  use App\Card\Card;
+//  use App\Card\Deck;
+//  use App\Card\Player;
+//  use App\Card\CardHand;
+
 class Deck
 {
     /**
@@ -10,18 +15,6 @@ class Deck
     protected array $deck;
     private $color = array("♥", "♣", "♦", "♠");
     private $value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
-
-    /*     public function __construct()
-    {
-        $this->deck = $deck;
-
-        for ($i = 0; $this->count($color); $i++) {
-            for ($j = 0; $this->count($value); $j++) {
-                array_push($this->deck, new App/Card/Card($i, $j));
-            }
-        }
-
-    } */
 
     public function __construct()
     {
@@ -33,30 +26,20 @@ class Deck
         }
     }
 
-
-
-
-    /*
-    private array $deck = [];
-    private array $color = [];
-    private array $value = []; */
-
-    /*     public function __construct()
-    {
-        $this->deck = array();
-        $this->color = array("♣", "♦", "♥", "♠");
-        $this->value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
-
-        for ($i = 0; $i < count($this->color); $i++) {
-            for ($j = 0; $i < count($this->value); $j++) {
-                array_push($this->deck, new App/Card/Card($i, $j));
-            }
-        }
-    } */
-
-
     public function get_cards()
     {
         return $this->deck;
     }
+
+    // public function deal_cards(int $num, array $array) 
+    // {
+    //     $cardArray = [];
+
+    //     for ($i = 0; $i < $num; $i++) {
+    //         array_push($cardArray, array_shift($array));
+    //     }
+
+    //     return $cardArray;
+    // }
+
 }

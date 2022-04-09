@@ -26,4 +26,26 @@
 
 </div>
 
+<form method="post">
+    <fieldset>
+    <legend>Dra flera kort</legend>
+
+    <p>
+        <input type="number" name="number" value="1">
+        <a href="{{ link_to_draw }}">
+            <input type="submit" name="draw" value="Dra flera kort" min="1">
+        </a>
+    </p>
+
+    </fieldset>
+</form>
+
+<div>
+
+{{ include('block/flash-message.html.twig') }}
+
+Det finns {{ qty }} kort kvar i kortleken!
+
+</div>
+
 {% endblock %}
