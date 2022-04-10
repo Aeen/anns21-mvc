@@ -437,6 +437,11 @@ nav  li a:focus::after {
     color: red;
 }
 
+.cards .Joker {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
 @media (max-width: 900px) {
 
     .logo img{

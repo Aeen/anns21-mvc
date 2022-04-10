@@ -4,6 +4,7 @@ namespace App\Card;
 
  use App\Card\Card;
  use App\Card\Deck;
+ use App\Card\DeckWith2Jokers;
  use App\Card\Player;
 
 class Deck
@@ -11,7 +12,7 @@ class Deck
     /**
      * A deck of cards
      */
-    private array $deck;
+    protected array $deck;
     private $color = array("♥", "♣", "♦", "♠");
     private $value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
 
