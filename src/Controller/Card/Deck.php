@@ -2,17 +2,16 @@
 
 namespace App\Card;
 
-//  use App\Card\Card;
-//  use App\Card\Deck;
-//  use App\Card\Player;
-//  use App\Card\CardHand;
+ use App\Card\Card;
+ use App\Card\Deck;
+ use App\Card\Player;
 
 class Deck
 {
     /**
      * A deck of cards
      */
-    protected array $deck;
+    private array $deck;
     private $color = array("♥", "♣", "♦", "♠");
     private $value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
 
@@ -31,15 +30,16 @@ class Deck
         return $this->deck;
     }
 
-    // public function deal_cards(int $num, array $array) 
-    // {
-    //     $cardArray = [];
+    public function draw_card()
+    {
+        $card = array_shift($this->deck);
+        
+        return $card;
+    }
 
-    //     for ($i = 0; $i < $num; $i++) {
-    //         array_push($cardArray, array_shift($array));
-    //     }
-
-    //     return $cardArray;
-    // }
+    public function shuffle_deck()
+    {
+        return shuffle($this->deck);
+    }
 
 }

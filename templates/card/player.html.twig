@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+
+    <h1>{{ title }}</h1>
+
+{{ include('./card/navbar.html.twig') }}
+
+{% if deck is defined %}
+{% set count = 1 %}
+{% for players in deck %}
+<div class="message-player">
+    <h2>Player {{ count }}</h2>
+</div>
+{% set count = count + 1 %}
+    <div class="card-container">
+        {% for cards in players %}
+            <div class="cards">
+                    <div class="{{ cards }} left-card">
+                      {{ cards }}
+                    </div>
+                    <div class="{{ cards }} right-card">
+                       {{ cards }}
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endif %}
+
+{# {% if deck is defined %}
+    <div class="card-container">
+       {% for key_a, value_a in deck %}
+            <div class="cards">
+                {% for key_b, value_b in deck[key_a] %}
+                    <div class="{{ cards }} left-card">
+                        {{ value_b }}
+                    </div>
+                    <div class="{{ cards }} right-card">
+                        {{ value_b }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %} #}
+
+
+<div class="flash-messages">
+
+{{ include('block/flash-message.html.twig') }}
+
+</div>
+
+<form method="post" class="form">
+    <fieldset>
+
+    <legend>Välj antal spelare och kort</legend>
+
+    <p>
+        <label for="players">Antal spelare:</label><br>
+            <input type="number" name="players" value="1" min="1"><br>
+        <label for="cards">Antal kort:</label><br>
+            <input type="number" name="cards" value="1" min="1"><br>
+        <a href="{{ link_to_play }}">
+            <input type="submit" name="draw" value="Dra flera kort" min="1">
+        </a>
+    </p>
+
+    </fieldset>
+</form>
+
+<div class="messages">
+
+Det finns {{ qty }} kort kvar i kortleken!
+
+</div>
+
+{% endblock %}

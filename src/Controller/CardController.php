@@ -77,45 +77,6 @@ class CardController extends AbstractController
     }
 
 
-    // /**
-    // * @Route(
-    // *       "/card/deck/draw",
-    // *       name="card-draw",
-    // *       methods={"GET"}
-    // * )
-    // */
-    // public function draw(): response
-    // {
-    //     $num = 1;
-    //     $cardArray = [];
-    //     $printArray = [];
-    //     $cards = new \App\Card\Deck();
-    //     $deck = $cards->get_cards();
-
-    //     shuffle($deck);
-
-    //     // for ($i = 0; $i < 5; $i++) {
-    //     //     array_push($cardArray, array_shift($deck));
-    //     // }
-
-
-    //     $cardArray = $cards->deal_cards($num, $deck);
-
-    //     for ($i = 0; $i < count($cardArray); $i++) {
-    //         array_push($printArray, $cardArray[$i]->to_string());
-    //     }
-
-    //     $numLeft = count($deck);
-
-    //     $data = [
-    //         'title' => 'Draw',
-    //         'qty' => $numLeft,
-    //         'deck' => $printArray,
-    //         'link_to_draw' => $this->generateUrl('card-draw', ['number' => 5,]),
-    //     ];
-    //     return $this->render('card\draw.html.twig', $data);
-    // }
-
 /**
     * @Route(
     *       "/card/deck/draw",
@@ -173,6 +134,7 @@ class CardController extends AbstractController
 
         return $this->render('card\draw.html.twig', $data);
     }
+
 
     /**
     * @Route(
@@ -234,5 +196,77 @@ class CardController extends AbstractController
 
         return $this->render('card\draw.html.twig', $data);
     }
+
+
+       /**
+    * @Route(
+    *       "/card/deck/deal/:players/:cards",
+    *       name="card-draw-deal",
+    *       methods={"POST", "GET"}
+    * )
+    */
+    public function deal(
+        Request $request
+    ): response
+    {
+        $numCards  = $request->request->get('cards') ?? 0;
+        $numPlayers  = $request->request->get('players') ?? 0;
+        $num = $numCards * $numPlayers;
+
+        $cardArray = [];
+        $stringArray = [];
+        $cards = new \App\Card\Deck();
+        $cards->shuffle_deck();
+        $deck = $cards->get_cards();
+        $playerArray = [];
+        //$playerArray = new \App\Card\Player();
+        $deckSize = count($deck);
+
+        if ($numCards == 0 && $numPlayers == 0) {
+
+            $this->addFlash("info", "Välj antal spelare och kort för att börja spela!");
+
+        } elseif ($deckSize < $num)  {
+
+            $this->addFlash("info", "Det finns inte tillräckligt med kort i kortleken.");
+
+        } elseif ($deckSize >= $num)  {
+
+            for ($k = 0; $k < $numPlayers; $k++) {
+
+                unset($cardArray);
+                $cardArray = array();
+                for ($i = 0; $i < $numCards; $i++) {
+                    array_push($cardArray, $cards->draw_card());
+                }
+    
+                //print_r($cardArray);
+
+                unset($stringArray);
+                $stringArray = array();
+                for ($i = 0; $i < count($cardArray); $i++) {
+                    array_push($stringArray, $cardArray[$i]->to_string());
+                }
+
+                array_push($playerArray, $stringArray);
+            }
+
+        } 
+
+        $deck = $cards->get_cards();
+        $numLeft = count($deck);
+
+        //print_r($playerArray);
+
+        $data = [
+            'title' => 'Deal',
+            'qty' => $numLeft,
+            'deck' => $playerArray,
+            'link_to_play' => $this->generateUrl('card-draw-deal', ['cards' => $numCards, 'player' => $numPlayers]),
+        ];
+
+        return $this->render('card\player.html.twig', $data);
+    }
+
    
 }

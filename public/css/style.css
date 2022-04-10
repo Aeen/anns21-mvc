@@ -373,13 +373,44 @@ nav  li a:focus::after {
     transform: scale(1);
 }
 
+.messages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1vh 0;
+}
+
+.message-player {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.message-player h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    margin: 1vh 0;
+}
+
+.flash-messages {
+    color: red;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1vh 0;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-/*     display: grid;
-    grid-template-columns: repeat(13, auto);
-    justify-content: center; */
 }
 
 .cards {

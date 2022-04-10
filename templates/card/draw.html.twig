@@ -26,7 +26,13 @@
 
 </div>
 
-<form method="post">
+<div class="flash-messages">
+
+{{ include('block/flash-message.html.twig') }}
+
+</div>
+
+<form method="post" class="form">
     <fieldset>
     <legend>Dra flera kort</legend>
 
@@ -40,9 +46,7 @@
     </fieldset>
 </form>
 
-<div>
-
-{{ include('block/flash-message.html.twig') }}
+<div class="messages">
 
 Det finns {{ qty }} kort kvar i kortleken!
 
