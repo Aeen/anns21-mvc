@@ -2,10 +2,10 @@
 
 namespace App\Card;
 
- use App\Card\Card;
- use App\Card\Deck;
- use App\Card\DeckWith2Jokers;
- use App\Card\Player;
+//  use App\Card\Card;
+//  use App\Card\Deck;
+//  use App\Card\DeckWith2Jokers;
+//  use App\Card\Player;
 
 class Card
 {
@@ -21,14 +21,13 @@ class Card
         $this->value = $value;
     }
 
-    public function get_details(): array
+    public function getDetails(): array
     {
         return [$this->color, $this->value];
     }
 
-    public function to_string(): string
+    public function toString(): string
     {
         return $this->color . " " . $this->value;
     }
-
 }

@@ -2,10 +2,10 @@
 
 namespace App\Card;
 
- use App\Card\Card;
- use App\Card\Deck;
- use App\Card\DeckWith2Jokers;
- use App\Card\Player;
+//  use App\Card\Card;
+//  use App\Card\Deck;
+//  use App\Card\DeckWith2Jokers;
+//  use App\Card\Player;
 
 class Deck
 {
@@ -26,21 +26,20 @@ class Deck
         }
     }
 
-    public function get_cards()
+    public function getCards()
     {
         return $this->deck;
     }
 
-    public function draw_card()
+    public function drawCard()
     {
         $card = array_shift($this->deck);
-        
+
         return $card;
     }
 
-    public function shuffle_deck()
+    public function shuffleDeck()
     {
         return shuffle($this->deck);
     }
-
 }

@@ -8,21 +8,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardControllerJson
 {
-
     /**
      * @Route(
      *      "/card/api/deck",
      *      name="card-api-deck"
      * )
      */
-    public function JsonCard(): Response
+    public function jsonCard(): Response
     {
         $cardArray = [];
         $cards = new \App\Card\Deck();
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
 
         for ($i = 0; $i < count($deck); $i++) {
-            array_push($cardArray, $deck[$i]->to_string());
+            array_push($cardArray, $deck[$i]->toString());
         }
 
         $data = [
@@ -33,8 +32,7 @@ class CardControllerJson
         // return new JsonResponse($data);
 
         $response = new JsonResponse([$data]);
-        $response->setEncodingOptions( $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         return $response;
     }
-
 }

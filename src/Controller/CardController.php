@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class CardController extends AbstractController
 {
     /**
@@ -20,7 +19,7 @@ class CardController extends AbstractController
         return $this->render('card\card.html.twig');
     }
 
-        /**
+    /**
      * @Route("/game/card", name="game-card")
      */
     public function game(): Response
@@ -36,10 +35,10 @@ class CardController extends AbstractController
     {
         $cardArray = [];
         $cards = new \App\Card\Deck();
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
 
         for ($i = 0; $i < count($deck); $i++) {
-            array_push($cardArray, $deck[$i]->to_string());
+            array_push($cardArray, $deck[$i]->toString());
         }
 
         $data = [
@@ -51,7 +50,7 @@ class CardController extends AbstractController
                 '3' => "A4",
             ], */
         ];
-        
+
         return $this->render('card\card.html.twig', $data);
     }
 
@@ -63,17 +62,17 @@ class CardController extends AbstractController
     {
         $cardArray = [];
         $cards = new \App\Card\DeckWith2Jokers();
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
 
         for ($i = 0; $i < count($deck); $i++) {
-            array_push($cardArray, $deck[$i]->to_string());
+            array_push($cardArray, $deck[$i]->toString());
         }
 
         $data = [
             'title' => 'Card',
             'deck' => $cardArray
         ];
-        
+
         return $this->render('card\card.html.twig', $data);
     }
 
@@ -83,17 +82,15 @@ class CardController extends AbstractController
     */
     public function shuffle(
         SessionInterface $session
-    ): response
-    {
-
+    ): response {
         $cardArray = [];
         $cards = new \App\Card\Deck();
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
 
         shuffle($deck);
 
         for ($i = 0; $i < count($deck); $i++) {
-            array_push($cardArray, $deck[$i]->to_string());
+            array_push($cardArray, $deck[$i]->toString());
         }
 
         $data = [
@@ -107,18 +104,17 @@ class CardController extends AbstractController
     }
 
 
-/**
-    * @Route(
-    *       "/card/deck/draw",
-    *       name="card-draw",
-    *       methods={"GET", "POST"}
-    * )
-    */
+    /**
+        * @Route(
+        *       "/card/deck/draw",
+        *       name="card-draw",
+        *       methods={"GET", "POST"}
+        * )
+        */
     public function draw(
         Request $request,
         SessionInterface $session
-    ): response
-    {
+    ): response {
         $deck = $session->get("deck") ?? new \App\Card\Deck();
         $num  = $request->request->get('number') ?? 1;
         $cardArray = [];
@@ -126,30 +122,26 @@ class CardController extends AbstractController
 
         $numCards = count($deck);
 
-        if ($numCards >= $num) {     
-
+        if ($numCards >= $num) {
             shuffle($deck);
 
             for ($i = 0; $i < $num; $i++) {
                 array_push($cardArray, array_shift($deck));
             }
-    
-            for ($i = 0; $i < count($cardArray); $i++) {
-                array_push($printArray, $cardArray[$i]->to_string());
-            }
 
+            for ($i = 0; $i < count($cardArray); $i++) {
+                array_push($printArray, $cardArray[$i]->toString());
+            }
         } elseif ($numCards == 0) {
             $cards = new \App\Card\Deck();
-            $deck = $cards->get_cards();
+            $deck = $cards->getCards();
 
             $this->addFlash("info", "Kortleken har blandats på nytt.");
             $this->addFlash("info", "Nu kan du dra fler kort igen.");
-
-        } elseif ($numCards < $num)  {
-
+        } elseif ($numCards < $num) {
             $this->addFlash("info", "Du kan bara dra " . $numCards . " kort.");
         }
-        
+
 
         $numLeft = count($deck);
 
@@ -173,11 +165,10 @@ class CardController extends AbstractController
     *       methods={"POST", "GET"}
     * )
     */
-    public function draw_number(
+    public function drawNumber(
         Request $request,
         SessionInterface $session
-    ): response
-    {
+    ): response {
         $deck = $session->get("deck") ?? new \App\Card\Deck();
 
         $num  = $request->request->get('number') ?? 1;
@@ -185,31 +176,27 @@ class CardController extends AbstractController
         $cardArray = [];
         $printArray = [];
         $cards = new \App\Card\Deck();
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
 
         $numCards = count($deck);
 
-        if ($numCards >= $num) {     
-
+        if ($numCards >= $num) {
             shuffle($deck);
 
             for ($i = 0; $i < $num; $i++) {
                 array_push($cardArray, array_shift($deck));
             }
-    
-            for ($i = 0; $i < count($cardArray); $i++) {
-                array_push($printArray, $cardArray[$i]->to_string());
-            }
 
+            for ($i = 0; $i < count($cardArray); $i++) {
+                array_push($printArray, $cardArray[$i]->toString());
+            }
         } elseif ($numCards == 0) {
             $cards = new \App\Card\Deck();
-            $deck = $cards->get_cards();
+            $deck = $cards->getCards();
 
             $this->addFlash("info", "Kortleken har blandats på nytt.");
             $this->addFlash("info", "Nu kan du dra fler kort igen.");
-
-        } elseif ($numCards < $num)  {
-
+        } elseif ($numCards < $num) {
             $this->addFlash("info", "Du kan bara dra " . $numCards . " kort.");
         }
 
@@ -228,7 +215,7 @@ class CardController extends AbstractController
     }
 
 
-       /**
+    /**
     * @Route(
     *       "/card/deck/deal/:players/:cards",
     *       name="card-draw-deal",
@@ -237,8 +224,7 @@ class CardController extends AbstractController
     */
     public function deal(
         Request $request
-    ): response
-    {
+    ): response {
         $numCards  = $request->request->get('cards') ?? 0;
         $numPlayers  = $request->request->get('players') ?? 0;
         $num = $numCards * $numPlayers;
@@ -246,44 +232,37 @@ class CardController extends AbstractController
         $cardArray = [];
         $stringArray = [];
         $cards = new \App\Card\Deck();
-        $cards->shuffle_deck();
-        $deck = $cards->get_cards();
+        $cards->shuffleDeck();
+        $deck = $cards->getCards();
         $playerArray = [];
         //$playerArray = new \App\Card\Player();
         $deckSize = count($deck);
 
         if ($numCards == 0 && $numPlayers == 0) {
-
             $this->addFlash("info", "Välj antal spelare och kort för att börja spela!");
-
-        } elseif ($deckSize < $num)  {
-
+        } elseif ($deckSize < $num) {
             $this->addFlash("info", "Det finns inte tillräckligt med kort i kortleken.");
-
-        } elseif ($deckSize >= $num)  {
-
+        } elseif ($deckSize >= $num) {
             for ($k = 0; $k < $numPlayers; $k++) {
-
                 unset($cardArray);
                 $cardArray = array();
                 for ($i = 0; $i < $numCards; $i++) {
-                    array_push($cardArray, $cards->draw_card());
+                    array_push($cardArray, $cards->drawCard());
                 }
-    
+
                 //print_r($cardArray);
 
                 unset($stringArray);
                 $stringArray = array();
                 for ($i = 0; $i < count($cardArray); $i++) {
-                    array_push($stringArray, $cardArray[$i]->to_string());
+                    array_push($stringArray, $cardArray[$i]->toString());
                 }
 
                 array_push($playerArray, $stringArray);
             }
+        }
 
-        } 
-
-        $deck = $cards->get_cards();
+        $deck = $cards->getCards();
         $numLeft = count($deck);
 
         //print_r($playerArray);
@@ -297,6 +276,4 @@ class CardController extends AbstractController
 
         return $this->render('card\player.html.twig', $data);
     }
-
-   
 }
