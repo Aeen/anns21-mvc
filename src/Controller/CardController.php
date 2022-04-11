@@ -20,6 +20,14 @@ class CardController extends AbstractController
         return $this->render('card\card.html.twig');
     }
 
+        /**
+     * @Route("/game/card", name="game-card")
+     */
+    public function game(): Response
+    {
+        return $this->render('card\game.html.twig');
+    }
+
 
     /**
      * @Route("/card/deck", name="card-deck")

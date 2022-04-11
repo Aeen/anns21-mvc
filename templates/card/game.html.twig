@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game Card{% endblock %}
+
+{% block body %}
+
+    <h1> Game Card </h1>
+
+    {{ include('./card/navbar.html.twig') }}
+
+    <div class="practice-img">
+        <img src="{{ asset("img/pexels-card.jpg") }}" alt="Dekorativ bild på kort">
+    </div>
+
+    <h2>Black Jack</h2>
+    <p>Spelet går ut på att komma så nära talet 21 som möjligt utan att bli "tjock", det vill säga få över 21. Man måste dessutom ha bättre kort än dealern. Varje spelare spelar MOT dealern, inte mot varandra. Alla klädda kort är värda 10, ess är 11 eller 1. Om spelarens 2 första kort är ett ess och ett klätt kort/en 10:a kallas det Black Jack och ger en och en halv gånger insatsen, såvida inte dealern också får Black Jack. Får spelaren Black Jack, och dealern har ess som första kort kan spelaren välja att ta "jämna pengar", det vill säga få vinst lika stor som insatsen. Om både spelare och dealer har 17, 18 eller 19 så vinner dealern, har både spelare och dealer 20 eller 21 så blir det lika, dvs ingen vinst till spelaren men han blir heller inte av med sin insats. </p>
+
+    <h3>Flödesschema</h3>
+
+    <div class="game-img">
+        <img src="{{ asset("img/blackjack.png") }}" alt="Flödesschema">
+    </div>
+
+    <h3>Pseudokod</h3>
+    <pre>
+        Skapa kortlek enligt följande värden:
+        
+        - 52 kort
+        - 1-10, värde = vad kortet anger
+        - Ess, värde = 1 eller 11
+        - Knekt/dam/kund, värde = 10
+        
+        Skapa en array med färg
+        Skapa en array med värde
+        Skapa en kortlek av de två arrayerna
+
+        Blanda kortleken
+
+        Fråga hur många som ska spela?
+
+        Dela ut 2 öppna kort till varje spelare och 1 öppet till dealern.
+        Spara korten i varje enskild hand (array) och total summa (int)
+
+        Skriv en metod för spelarnas tur:
+        - Fråga om spela/stanna
+            Spela:
+                - Dela ut 1 kort
+            Stanna:
+                - Gå vidare till nästas tur
+        - Summera händer
+        
+        Skriv en metod för dealerns tur:
+        - Om summa av hand >= 17, stanna
+            - Kontrollera om hand > än spelarnas händer
+                Om högre:
+                    - Dealer vinner, spelet slut
+                Om lägre:
+                    - Dealer förlorar
+        - Om summa av hand < 17, spela
+            - Dela ut 1 kort
+            - Kontrollera om summa av hand >= 17
+                Om högre:
+                    - Dealer vinner, spelet slut
+                Om lägre:
+                    - Gå vidare till spelarnas tur
+        
+        När spelet är slut. Fråga om spelarna vill spela igen.
+    </pre>
+
+<div class="klasser">
+    <h3>Klasser</h3>
+
+    <h4>Card</h4>
+    <p>Beskriver korten. Skapar string av korten.</p>
+
+    <h4>Deck</h4>
+    <p>Skapar kortleken. Blandar korten. Delar ut korten.</p>
+
+    <h4>Player</h4>
+    <p>Håller reda på spelarna</p>
+
+    <h4>Dealer</h4>
+    <p>Håller reda på dealern</p>
+
+    <h4>CardHand</h4>
+    <p>Håller reda på korten för varje spelade och dealers hand. Summerar händerna.</p>
+</div>   
+
+
+{% endblock %}
