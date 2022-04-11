@@ -1,5 +1,18 @@
 ## Kmom02 ##
 
-### Rubrik ###
+### Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP ###
 
-Skriv din text här...
+Arv handlar om att en klass ärver en annan. Att den klassen som ärver blir som en specialiserad klass eller utökad klass. Komposition innebär också att en klass använder sig av en annan klass, men med skillnaden att klasserna inte kan fungera utan varandra. Som exempel kan vara klassen Hus och klassen Rum. Rum kan inte finnas utan ett hus, och ett hus har minst ett rum.
+En klass kan implementera ett interface, vilket innebär att klassen förbinder sig att erbjuda ett API som motsvaras av interfacet. Ett interface innehåller ingen kod som en klass kan återanvända, utan det är bara ett löfte om att interfacets metoder skall återfinnas inuti klassen. Trait består av metoder och medlemsvariabler vilka kan användas för att utöka funktionaliteten av en klass. Det låter väldigt likt arv, men det är alltså en annan konstruktion. En klass kan använda flera traits. När klassen använder ett trait så blir dess kod som en del av klassen. Man kan tänka sig att traitets kod kopieras in i klassen, det är en mental bild som fungerar.
+
+
+### Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser? ###
+Jag ser mycket förbättringspotential. Det känns som att jag hade kunnat göra mer i klasserna och mindre i controllern. Men jag är osäker på hur man gör saker "bäst". Jag är väldigt nöjd att jag lyckades ro detta i land. Det tog mig måndag-måndag att klara detta, i princip hela dagar. Men nu idag, när jag skriver detta så känns det ändå som att det var värt det. Jag hade nog bara behövt en liten knuff i rätt riktning i början. Kanske ett exempel på en kortsak istället för en tärningssak. Jag använde mig av en Deck, Card och DeckWithJokers klass. Jag försökte göra en Player klass men jag fick det aldrig att fungera med att kombinera den med spelarnas valda kort. Därför valde jag den "enkla" vägen. Så den biten är jag inte så nöjd med. 
+
+
+### Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation? ###
+Jag tycker att det kändes bra. Jag känner mig ändå hyfsat "säker" i hur jag ska tänka där. Sen är det svårt att veta om man gjort för mycket eller för lite. Men jag är nöjd med min insats i den delen och tror absolut att det är något jag kommer att stödja mig mot om jag kommer konstruera ett sådant spel.
+
+
+### Vilken är din TIL för detta kmom? ###
+Oj. Mycket. Nästan allt kändes det som i början. Jag hade en väldigt, väldigt trög start. Jag visste inte var jag skulle börja eller hur jag skulle göra. Hur mycket jag än tittade på Dice exemplet så kunde jag bara inte komma igång. Men om jag ska nämna en sak så är det att få in kortleken i twig med hjälp av loopar osv.
