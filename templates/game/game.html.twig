@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Black Jack{% endblock %}
+
+{% block body %}
+
+<h1>Black Jack</h1>
+
+{{ include('./game/navbar.html.twig') }}
+
+<div class="card-container-play">
+
+    <div class="card-container">
+        <h2>Dealers hand</h2>
+    </div>
+
+    <div class="card-container">
+        <h2>Players hand</h2>
+    </div>
+
+<div class="card-container button-play">
+    <a href="{{ path("game-playing") }}">Start</a>
+</div>
+
+</div>
+
+{% endblock %}

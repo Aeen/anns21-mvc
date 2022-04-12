@@ -8,25 +8,50 @@
 
 {{ include('./game/navbar.html.twig') }}
 
-<h2>Börja spela</h2>
+<div class="card-container-play">
 
-
-
-{# <div class="card-container">
-
-{% if deck is defined %}
-        {% for cards in deck %}
-            <div class="cards">
-                <div class="{{ cards }} left-card">
-                    {{ cards }}
+    <div class="card-container">
+        <h2>Dealers hand</h2>
+    </div>
+    <div class="card-container">
+        {% if dealerHand is defined %}
+            {% for cards in dealerHand %}
+                <div class="cards">
+                    <div class="{{ cards }} left-card">
+                        {{ cards }}
+                    </div>
+                    <div class="{{ cards }} right-card">
+                        {{ cards }}
+                    </div>
                 </div>
-                <div class="{{ cards }} right-card">
-                    {{ cards }}
-                </div>
-            </div>
-        {% endfor %}
-{% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
 
-</div> #}
+    <div class="card-container">
+        <h2>Players hand</h2>
+    </div>
+    <div class="card-container">
+        {% if playerHand is defined %}
+            {% for cards in playerHand %}
+                <div class="cards">
+                    <div class="{{ cards }} left-card">
+                        {{ cards }}
+                    </div>
+                    <div class="{{ cards }} right-card">
+                        {{ cards }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+<div class="card-container button-play">
+    <a href="{{ path("game-playing") }}">Reset</a>
+    <a href="{{ path("game-playing") }}">Hit</a>
+    <a href="{{ path("game-playing") }}">Stand</a>
+</div>
+
+</div>
 
 {% endblock %}
