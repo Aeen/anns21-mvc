@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Black Jack{% endblock %}
+
+{% block body %}
+
+<h1>Black Jack</h1>
+
+{{ include('./game/navbar.html.twig') }}
+
+<h2>Börja spela</h2>
+
+
+
+{# <div class="card-container">
+
+{% if deck is defined %}
+        {% for cards in deck %}
+            <div class="cards">
+                <div class="{{ cards }} left-card">
+                    {{ cards }}
+                </div>
+                <div class="{{ cards }} right-card">
+                    {{ cards }}
+                </div>
+            </div>
+        {% endfor %}
+{% endif %}
+
+</div> #}
+
+{% endblock %}

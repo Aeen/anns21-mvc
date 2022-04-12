@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Black Jack{% endblock %}
+
+{% block body %}
+
+    <h1>Black Jack</h1>
+
+{{ include('./game/navbar.html.twig') }}
+
+<h2>Spelregler</h2>
+<p>
+Spelet går ut på att komma så nära talet 21 som möjligt utan att bli "tjock", det vill säga få över 21. Man måste dessutom ha bättre kort än dealern. Varje spelare spelar MOT dealern, inte mot varandra. Alla klädda kort är värda 10, ess är 11 eller 1, övriga kort är värda dess siffra. Efter att spelaren har fått 2 kort och dealern 1 kort, summeras händerna. Om spelarens 2 första kort är ett ess och ett klätt kort/en 10:a kallas det Black Jack och ger vinst. Från och med nu, delas 1 kort ut till varje spelare och dealer, om spelare/dealer inte väljer att stanna. Om både spelare och dealer har 17, 18 eller 19 så vinner dealern, har både spelare och dealer 20 eller 21 så blir det lika, dvs ingen vinst till spelaren men han blir heller inte av med sin insats.
+</p>
+
+<a href="{{ path("game-play") }}">Börja spela</a>
+
+{# <div class="card-container">
+
+{% if deck is defined %}
+        {% for cards in deck %}
+            <div class="cards">
+                <div class="{{ cards }} left-card">
+                    {{ cards }}
+                </div>
+                <div class="{{ cards }} right-card">
+                    {{ cards }}
+                </div>
+            </div>
+        {% endfor %}
+{% endif %}
+
+</div> #}
+
+{% endblock %}
