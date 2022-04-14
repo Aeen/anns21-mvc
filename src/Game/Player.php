@@ -65,7 +65,8 @@ class Player
 
     public function setCurrentScore($pulledCard)
     {
-        $this->currentScore += $pulledCard->getValueOfCard();;
+        $this->currentScore += $pulledCard->getValueOfCard();
+        ;
     }
 
     public function getCurrentScore()

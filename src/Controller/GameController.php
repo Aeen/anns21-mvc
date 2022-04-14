@@ -38,45 +38,99 @@ class GameController extends AbstractController
     /**
      * @Route("/game/playing", name="game-playing")
      */
-    public function BlackJack(
+    public function blackJack(
         Request $request,
         SessionInterface $session
-    ): response
-    {
-        // $dealerHand = $session->get("dealerHand");
-        // $playerHand = $session->get("playerHand");
+    ): response {
+        $dealerScore = $session->get("dealerScore") ?? 0;
+        $playerScore = $session->get("playerScore") ?? 0;
 
-        $start  = $request->request->get('start');
+        $dealerArray = $session->get("dealerArray") ?? [];
+        $playerArray = $session->get("playerArray") ?? [];
+
         $reset  = $request->request->get('reset');
         $hit  = $request->request->get('hit');
         $stand  = $request->request->get('stand');
 
-        $player = new \App\Game\Player();
-        $dealer = new \App\Game\Player('dealer');
+        $player = $session->get("player") ?? new \App\Game\Player();
+        $dealer = $session->get("dealer") ?? new \App\Game\Player('dealer');
+        $deck = $session->get("deck") ?? new \App\Game\Deck();
+        $game = $session->get("game") ?? new \App\Game\Game($deck, $player, $dealer);
 
-        $playerArray = [];
-        $dealerArray = [];
-        $deck = new \App\Game\Deck();
+        if ($reset) {
+            $player = new \App\Game\Player();
+            $dealer = new \App\Game\Player('dealer');
+            $deck = new \App\Game\Deck();
+            $game = new \App\Game\Game($deck, $player, $dealer);
 
-        $game = new \App\Game\Game($deck, $player, $dealer);
-        $game->start();
+            $session->set("player", $player);
+            $session->set("dealer", $dealer);
+            $session->set("deck", $deck);
+            $session->set("game", $game);
+            $session->set("dealerScore", 0);
+            $session->set("playerScore", 0);
+            $session->set("dealerArray", []);
+            $session->set("playerArray", []);
 
-        $dealerHand = $dealer->getCurrentHand();
-        $playerHand = $player->getCurrentHand();
 
-        for ($i = 0; $i < count($dealerHand); $i++) {
-            array_push($dealerArray, $dealerHand[$i]->toString());
+            $game->start();
+
+            $dealerHand = $dealer->getCurrentHand();
+            $playerHand = $player->getCurrentHand();
+
+            for ($i = 0; $i < count($dealerHand); $i++) {
+                array_push($dealerArray, $dealerHand[$i]->toString());
+            }
+
+            for ($i = 0; $i < count($playerHand); $i++) {
+                array_push($playerArray, $playerHand[$i]->toString());
+            }
+
+            // print_r($dealerArray);
+            // print_r($playerArray);
+
+            $dealerScore = $dealer->getCurrentScore();
+            $playerScore = $player->getCurrentScore();
+        } elseif ($hit) {
+            $game->hit();
+            $game->dealerHit();
+
+            $dealerHand = $dealer->getCurrentHand();
+            $playerHand = $player->getCurrentHand();
+
+            for ($i = 0; $i < count($dealerHand); $i++) {
+                array_push($dealerArray, $dealerHand[$i]->toString());
+            }
+
+            for ($i = 0; $i < count($playerHand); $i++) {
+                array_push($playerArray, $playerHand[$i]->toString());
+            }
+
+            $dealerScore = $dealer->getCurrentScore();
+            $playerScore = $player->getCurrentScore();
+        } elseif ($stand) {
+            $dealerScore = $dealer->getCurrentScore();
+
+            while ($dealerScore < 17) {
+                $game->dealerHit();
+                $dealerScore = $dealer->getCurrentScore();
+            }
+
+            $dealerHand = $dealer->getCurrentHand();
+            $playerHand = $player->getCurrentHand();
+
+            for ($i = 0; $i < count($dealerHand); $i++) {
+                array_push($dealerArray, $dealerHand[$i]->toString());
+            }
+
+            for ($i = 0; $i < count($playerHand); $i++) {
+                array_push($playerArray, $playerHand[$i]->toString());
+            }
+
+            $dealerScore = $dealer->getCurrentScore();
+            $playerScore = $player->getCurrentScore();
         }
 
-        for ($i = 0; $i < count($playerHand); $i++) {
-            array_push($playerArray, $playerHand[$i]->toString());
-        }
-
-            print_r($dealerArray);
-            print_r($playerArray);
-
-        $dealerScore = $dealer->getCurrentScore();
-        $playerScore = $player->getCurrentScore();
 
         $data = [
             'title' => 'Card',

@@ -14,7 +14,7 @@
         <h2>Dealers hand</h2>
     </div>
     <div class="card-container">
-        <h4>{{ dealerScore }}</h4>
+        <h4>({{ dealerScore }})</h4>
     </div>
     <div class="card-container">
         {% if dealerHand is defined %}
@@ -35,7 +35,7 @@
         <h2>Players hand</h2>
     </div>
     <div class="card-container">
-        <h4>{{ playerScore }}</h4>
+        <h4>({{ playerScore }})</h4>
     </div>
     <div class="card-container">
         {% if playerHand is defined %}
@@ -53,9 +53,11 @@
     </div>
 
 <div class="card-container button-play">
-    <a href="{{ path("game-playing") }}">Reset</a>
-    <a href="{{ path("game-playing") }}">Hit</a>
-    <a href="{{ path("game-playing") }}">Stand</a>
+    <form method="post">
+        <input type="submit" name="reset" value="Start/Reset">
+        <input type="submit" name="hit" value="Hit">
+        <input type="submit" name="stand" value="Stand">
+    </form>
 </div>
 
 </div>

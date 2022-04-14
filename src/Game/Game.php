@@ -43,10 +43,26 @@ class Game
         $this->player->setCurrentHand($pulledCard);
         $this->player->setCurrentScore($pulledCard);
 
-        // $pulledCard = $this->deck->drawCard();
-        // $this->dealer->setCurrentHand($pulledCard);
-        // $this->dealer->setCurrentScore($pulledCard);
+        $pulledCard = $this->deck->drawCard();
+        $this->dealer->setCurrentHand($pulledCard);
+        $this->dealer->setCurrentScore($pulledCard);
     }
 
- 
+    public function hit()
+    {
+        $pulledCard = $this->deck->drawCard();
+        $this->player->setCurrentHand($pulledCard);
+        $this->player->setCurrentScore($pulledCard);
+    }
+
+    public function dealerHit()
+    {
+        $currentScore = $this->dealer->getCurrentScore();
+
+        if ($currentScore < 17) {
+            $pulledCard = $this->deck->drawCard();
+            $this->dealer->setCurrentHand($pulledCard);
+            $this->dealer->setCurrentScore($pulledCard);
+        }
+    }
 }
