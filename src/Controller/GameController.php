@@ -38,21 +38,56 @@ class GameController extends AbstractController
     /**
      * @Route("/game/playing", name="game-playing")
      */
-    public function card(): response
+    public function BlackJack(
+        Request $request,
+        SessionInterface $session
+    ): response
     {
-        $cardArray = [];
-        $cards = new \App\Card\Deck();
-        $deck = $cards->getCards();
+        // $dealerHand = $session->get("dealerHand");
+        // $playerHand = $session->get("playerHand");
 
-        for ($i = 0; $i < count($deck); $i++) {
-            array_push($cardArray, $deck[$i]->toString());
+        $start  = $request->request->get('start');
+        $reset  = $request->request->get('reset');
+        $hit  = $request->request->get('hit');
+        $stand  = $request->request->get('stand');
+
+        $player = new \App\Game\Player();
+        $dealer = new \App\Game\Player('dealer');
+
+        $playerArray = [];
+        $dealerArray = [];
+        $deck = new \App\Game\Deck();
+
+        $game = new \App\Game\Game($deck, $player, $dealer);
+        $game->start();
+
+        $dealerHand = $dealer->getCurrentHand();
+        $playerHand = $player->getCurrentHand();
+
+        for ($i = 0; $i < count($dealerHand); $i++) {
+            array_push($dealerArray, $dealerHand[$i]->toString());
         }
+
+        for ($i = 0; $i < count($playerHand); $i++) {
+            array_push($playerArray, $playerHand[$i]->toString());
+        }
+
+            print_r($dealerArray);
+            print_r($playerArray);
+
+        $dealerScore = $dealer->getCurrentScore();
+        $playerScore = $player->getCurrentScore();
 
         $data = [
             'title' => 'Card',
-            'dealerHand' => $cardArray,
-            'playerHand' => $cardArray
+            'dealerHand' => $dealerArray,
+            'playerHand' => $playerArray,
+            'dealerScore' => $dealerScore,
+            'playerScore' => $playerScore
         ];
+
+        // $session->set("dealerHand", $dealerHand);
+        // $session->set("playerHand", $playerHand);
 
         return $this->render('game\play.html.twig', $data);
     }

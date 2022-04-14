@@ -14,6 +14,9 @@
         <h2>Dealers hand</h2>
     </div>
     <div class="card-container">
+        <h4>{{ dealerScore }}</h4>
+    </div>
+    <div class="card-container">
         {% if dealerHand is defined %}
             {% for cards in dealerHand %}
                 <div class="cards">
@@ -30,6 +33,9 @@
 
     <div class="card-container">
         <h2>Players hand</h2>
+    </div>
+    <div class="card-container">
+        <h4>{{ playerScore }}</h4>
     </div>
     <div class="card-container">
         {% if playerHand is defined %}

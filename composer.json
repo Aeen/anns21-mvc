@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.11",
         "league/commonmark": "^2.2",
         "phpdocumentor/reflection-docblock": "^5.3",
+        "phpmd/phpmd": "^2.12",
         "phpstan/phpdoc-parser": "^1.4",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "6.0.*",
@@ -82,6 +83,8 @@
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "phpcs": "tools/php-codesniffer/vendor/bin/phpcs --standard=PSR12 src",
         "phpcbf": "tools/php-codesniffer/vendor/bin/phpcbf --standard=PSR12 src",
+        "phpstan": "vendor/bin/phpstan analyse src",
+        "phpmd": "vendor/bin/phpmd src text",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -103,6 +106,7 @@
         }
     },
     "require-dev": {
+        "phpstan/phpstan": "^1.5",
         "symfony/debug-bundle": "6.0.*",
         "symfony/maker-bundle": "^1.0",
         "symfony/stopwatch": "6.0.*",

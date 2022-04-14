@@ -26,8 +26,31 @@ class Card
         return [$this->value];
     }
 
+    public function getColor(): array
+    {
+        return [$this->color];
+    }
+
     public function toString(): string
     {
         return $this->color . " " . $this->value;
     }
+
+    public function getValueOfCard(): int
+    {
+        if (strtolower($this->value) === 'a') {
+            $value = 11; // @TODO An Ace can be either 1 or 11; player choice
+        } else {
+            $value = is_numeric($this->value) ? $this->value : 10;
+        }
+
+        return $value;
+    }
+
+    public function getTypeOfCard(): string
+    {
+        return $this->value;
+    }
+
+
 }

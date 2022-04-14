@@ -1,4 +1,10 @@
 {
+    "composer/pcre": {
+        "version": "3.0.0"
+    },
+    "composer/xdebug-handler": {
+        "version": "3.0.3"
+    },
     "dflydev/dot-access-data": {
         "version": "v3.0.1"
     },
@@ -104,6 +110,9 @@
     "nikic/php-parser": {
         "version": "v4.13.2"
     },
+    "pdepend/pdepend": {
+        "version": "2.10.3"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -113,8 +122,14 @@
     "phpdocumentor/type-resolver": {
         "version": "1.6.1"
     },
+    "phpmd/phpmd": {
+        "version": "2.12.0"
+    },
     "phpstan/phpdoc-parser": {
         "version": "1.4.2"
+    },
+    "phpstan/phpstan": {
+        "version": "1.5.4"
     },
     "psr/cache": {
         "version": "3.0.0"

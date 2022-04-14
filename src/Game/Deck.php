@@ -28,9 +28,7 @@ class Deck
 
     public function drawCard()
     {
-        $card = array_shift($this->deck);
-
-        return $card;
+        return array_shift($this->deck);
     }
 
     public function shuffleDeck()
