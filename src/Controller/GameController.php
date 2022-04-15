@@ -94,43 +94,54 @@ class GameController extends AbstractController
             $this->addFlash("info", $text);
 
         } elseif ($hit) {            
-            
-            $dealerScore = $session->get("dealerScore");
-            $playerScore = $session->get("playerScore");
 
-            if ($playerScore > 21) {
+            if ($playerScore > 21 || $dealerScore > 21 ) {
                 $this->addFlash("info", 'Spelet är slut. Börja om!');
-            }
-            
-            if ($dealerScore < 17) {
+            } elseif ($game->readStand() === 'stand') {
+                $this->addFlash("info", 'Du har tryckt på "stand" ');
+            } else {
                 $game->dealerHit();
-            }
-
-            if ($playerScore < 21) {
                 $game->hit();
             }
 
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
-
+    
             for ($i = 0; $i < count($dealerHand); $i++) {
                 array_push($dealerArray, $dealerHand[$i]->toString());
             }
-
+    
             for ($i = 0; $i < count($playerHand); $i++) {
                 array_push($playerArray, $playerHand[$i]->toString());
             }
-
+    
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
-
+    
             $session->set("dealerScore", $dealerScore);
             $session->set("playerScore", $playerScore);
 
-            $text = $game->checkForWinnerWhilePlaying();
 
-            $this->addFlash("info", $text);
+            if ($game->readStand() === 'stand') {
+                
+                $text = $game->checkForWinner();
+
+                $this->addFlash("info", $text);
+            } else {
+                $text = $game->checkForWinnerWhilePlaying();
+
+                $this->addFlash("info", $text);
+            }
+
+
         } elseif ($stand) {
+
+            $game->stand();
+
+            if ($playerScore > 21 || $dealerScore > 21) {
+                $this->addFlash("info", 'Spelet är slut. Börja om! ');
+            }
+
             $dealerScore = $dealer->getCurrentScore();
 
             while ($dealerScore < 17) {

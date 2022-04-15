@@ -412,6 +412,8 @@ nav  li a:focus::after {
     color: black;
     font-weight: bold;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 2vh;

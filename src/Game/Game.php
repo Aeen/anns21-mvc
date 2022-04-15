@@ -4,16 +4,18 @@ namespace App\Game;
 
 class Game
 {
-    public const BLACKJACK = 21; // The final score in Blackjack
+    //public const BLACKJACK = 21; // The final score in Blackjack
     private Deck $deck;
     private Player $player;
     private Player $dealer;
+    private string $stand;
 
-    public function __construct($deck, $player, $dealer)
+    public function __construct($deck, $player, $dealer, $stand = 'play')
     {
         $this->deck = $deck;
         $this->player = $player;
         $this->dealer = $dealer;
+        $this->stand = $stand;
     }
 
     public function start()
@@ -37,18 +39,38 @@ class Game
         $this->dealer->setCurrentScore($pulledCard);
     }
 
+    public function stand()
+    {
+        $this->stand = 'stand';
+    }
+
+    public function readStand()
+    {
+        return $this->stand;
+    }
+
     public function hit()
     {
-        $pulledCard = $this->deck->drawCard();
-        $this->player->setCurrentHand($pulledCard);
-        $this->player->setCurrentScore($pulledCard);
+
+        if ($this->stand != 'stand') {
+            $currentScore = $this->player->getCurrentScore();
+            $dealerScore = $this->dealer->getCurrentScore();
+    
+            if ($currentScore < 21 && $dealerScore < 21) {
+                $pulledCard = $this->deck->drawCard();
+                $this->player->setCurrentHand($pulledCard);
+                $this->player->setCurrentScore($pulledCard);
+            }
+        }
+        
     }
 
     public function dealerHit()
     {
         $currentScore = $this->dealer->getCurrentScore();
+        $playerScore = $this->player->getCurrentScore();
 
-        if ($currentScore < 17) {
+        if ($currentScore < 17 && $playerScore < 21) {
             $pulledCard = $this->deck->drawCard();
             $this->dealer->setCurrentHand($pulledCard);
             $this->dealer->setCurrentScore($pulledCard);
@@ -94,7 +116,7 @@ class Game
         } elseif ($dealersCurrentScore > 17 
             && $dealersCurrentScore <= 21
             && $dealersCurrentScore > $playersCurrentScore
-            && $playersCurrentScore >= 17
+            && ($playersCurrentScore >= 17 || $this->stand === 'stand')
         ) {
             return 'Dealer won';
         } elseif ($playersCurrentScore > 17 
