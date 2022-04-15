@@ -4,12 +4,12 @@ namespace App\Game;
 
 class Game
 {
-    private Deck $deck;
-    private Player $player;
-    private Player $dealer;
+    private $deck;
+    private $player;
+    private $dealer;
     private string $stand;
 
-    public function __construct(Deck $deck, Player $player, Player $dealer, string $stand = 'play')
+    public function __construct($deck, $player, $dealer, string $stand = 'play')
     {
         $this->deck = $deck;
         $this->player = $player;
