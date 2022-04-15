@@ -89,16 +89,25 @@ class GameController extends AbstractController
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
 
-            $text = $game->checkForWinner();
+            $text = $game->checkForWinnerWhilePlaying();
 
             $this->addFlash("info", $text);
 
-        } elseif ($hit) {
+        } elseif ($hit) {            
+            // if ($text === 'Player won') {
+            //     $this->addFlash("info", 'Spelet är slut. Börja om!');
+            // }
+            if ($playerScore > 21 && $dealersScore >= 17) {
+                $this->addFlash("info", 'Spelet är slut. Börja om!');
+            }
+            
             if ($dealerScore < 17) {
                 $game->dealerHit();
             }
 
-            $game->hit();
+            if ($playerScore < 21) {
+                $game->hit();
+            }
 
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
@@ -114,7 +123,7 @@ class GameController extends AbstractController
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
 
-            $text = $game->checkForWinner();
+            $text = $game->checkForWinnerWhilePlaying();
 
             $this->addFlash("info", $text);
         } elseif ($stand) {
