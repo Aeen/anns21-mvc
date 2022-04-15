@@ -62,7 +62,7 @@ class Game
         }
     }
 
-    public function dealerHit():void
+    public function dealerHit(): void
     {
         $currentScore = $this->dealer->getCurrentScore();
         $playerScore = $this->player->getCurrentScore();
