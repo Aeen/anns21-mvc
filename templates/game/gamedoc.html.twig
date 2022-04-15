@@ -8,6 +8,7 @@
 
     {{ include('./game/navbar.html.twig') }}
 
+    <p>Uppdaterad dokumentation</p>
     <div class="practice-img">
         <img src="{{ asset("img/pexels-card.jpg") }}" alt="Dekorativ bild på kort">
     </div>
@@ -18,7 +19,7 @@
     <h3>Flödesschema</h3>
 
     <div class="game-img">
-        <img src="{{ asset("img/blackjack.png") }}" alt="Flödesschema">
+        <img src="{{ asset("img/blackjack2.png") }}" alt="Flödesschema">
     </div>
 
     <h3>Pseudokod</h3>
@@ -27,7 +28,7 @@
         
         - 52 kort
         - 1-10, värde = vad kortet anger
-        - Ess, värde = 1 eller 11
+        - Ess, värde = 11
         - Knekt/dam/kund, värde = 10
         
         Skapa en array med färg
@@ -36,35 +37,33 @@
 
         Blanda kortleken
 
-        Fråga hur många som ska spela?
+        En spelare kan spela med en dealer.
 
-        Dela ut 2 öppna kort till varje spelare och 1 öppet till dealern.
-        Spara korten i varje enskild hand (array) och total summa (int)
+        Dela ut 2 öppna kort till spelare och 2 öppna till dealern.
+        Spara korten i varje enskild hand och total summa (int)
 
-        Skriv en metod för spelarnas tur:
-        - Fråga om spela/stanna
-            Spela:
-                - Dela ut 1 kort
-            Stanna:
-                - Gå vidare till nästas tur
-        - Summera händer
+        Spelaren kan välja hit eller stand:
+        - Hit:
+            Dela ut 1 kort.
+        - Stand:
+            Dealerns tur.
+        - Summera händer.
         
-        Skriv en metod för dealerns tur:
-        - Om summa av hand >= 17, stanna
-            - Kontrollera om hand > än spelarnas händer
-                Om högre:
-                    - Dealer vinner, spelet slut
-                Om lägre:
-                    - Dealer förlorar
-        - Om summa av hand < 17, spela
-            - Dela ut 1 kort
-            - Kontrollera om summa av hand >= 17
-                Om högre:
-                    - Dealer vinner, spelet slut
-                Om lägre:
-                    - Gå vidare till spelarnas tur
+        Dealerns tur:
+        - Om summa av hand >= 17, stand
+        - Om summ av hand < 17, hit
+
+        Check for winner:
+        - Den som får över 21 poäng förlorar.
+        - Om dealer och player har samma poäng
+            - Om poäng är 17, 18 eller 19: dealer vinner.
+            - Om poäng är 20 eller 21: oavgjort.
+            - Om poäng är mer än 21: spelet slut, ingen vann.
+        - Den med högst poäng vinner när:
+            - player har stannat.
+            - dealer har stannat.
         
-        När spelet är slut. Fråga om spelarna vill spela igen.
+        När spelet är slut kan spelaren välja att spela igen.
     </pre>
 
 <div class="klasser">
@@ -79,11 +78,9 @@
     <h4>Player</h4>
     <p>Håller reda på spelarna</p>
 
-    <h4>Dealer</h4>
-    <p>Håller reda på dealern</p>
+    <h4>Game</h4>
+    <p>Har hand om spelets gång. Hanterar hit, stand mm.</p>
 
-    <h4>CardHand</h4>
-    <p>Håller reda på korten för varje spelade och dealers hand. Summerar händerna.</p>
 </div>   
 
 

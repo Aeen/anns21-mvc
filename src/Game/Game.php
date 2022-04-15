@@ -4,13 +4,12 @@ namespace App\Game;
 
 class Game
 {
-    //public const BLACKJACK = 21; // The final score in Blackjack
     private Deck $deck;
     private Player $player;
     private Player $dealer;
     private string $stand;
 
-    public function __construct($deck, $player, $dealer, $stand = 'play')
+    public function __construct(Deck $deck, Player $player, Player $dealer, string $stand = 'play')
     {
         $this->deck = $deck;
         $this->player = $player;
@@ -18,7 +17,7 @@ class Game
         $this->stand = $stand;
     }
 
-    public function start()
+    public function start(): void
     {
         $this->deck->shuffleDeck();
 
@@ -39,33 +38,31 @@ class Game
         $this->dealer->setCurrentScore($pulledCard);
     }
 
-    public function stand()
+    public function stand(): void
     {
         $this->stand = 'stand';
     }
 
-    public function readStand()
+    public function readStand(): string
     {
         return $this->stand;
     }
 
-    public function hit()
+    public function hit(): void
     {
-
         if ($this->stand != 'stand') {
             $currentScore = $this->player->getCurrentScore();
             $dealerScore = $this->dealer->getCurrentScore();
-    
+
             if ($currentScore < 21 && $dealerScore < 21) {
                 $pulledCard = $this->deck->drawCard();
                 $this->player->setCurrentHand($pulledCard);
                 $this->player->setCurrentScore($pulledCard);
             }
         }
-        
     }
 
-    public function dealerHit()
+    public function dealerHit():void
     {
         $currentScore = $this->dealer->getCurrentScore();
         $playerScore = $this->player->getCurrentScore();
@@ -77,7 +74,7 @@ class Game
         }
     }
 
-    public function checkForWinner()
+    public function checkForWinner(): string
     {
         $dealersCurrentScore = $this->dealer->getCurrentScore();
         $playersCurrentScore = $this->player->getCurrentScore();
@@ -113,13 +110,15 @@ class Game
             && $playersCurrentScore > 21
         ) {
             return 'Dealer won';
-        } elseif ($dealersCurrentScore > 17 
+        } elseif (
+            $dealersCurrentScore > 17
             && $dealersCurrentScore <= 21
             && $dealersCurrentScore > $playersCurrentScore
             && ($playersCurrentScore >= 17 || $this->stand === 'stand')
         ) {
             return 'Dealer won';
-        } elseif ($playersCurrentScore > 17 
+        } elseif (
+            $playersCurrentScore > 17
             && $playersCurrentScore <= 21
             && $playersCurrentScore > $dealersCurrentScore
             && $dealersCurrentScore >= 17
@@ -135,7 +134,7 @@ class Game
         return '';
     }
 
-    public function checkForWinnerWhilePlaying()
+    public function checkForWinnerWhilePlaying(): string
     {
         $dealersCurrentScore = $this->dealer->getCurrentScore();
         $playersCurrentScore = $this->player->getCurrentScore();

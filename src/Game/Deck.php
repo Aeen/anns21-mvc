@@ -8,8 +8,8 @@ class Deck
      * A deck of cards
      */
     protected array $deck;
-    private $color = array("♥", "♣", "♦", "♠");
-    private $value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+    private array $color = array("♥", "♣", "♦", "♠");
+    private array $value = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class Deck
         }
     }
 
-    public function getCards()
+    public function getCards(): array
     {
         return $this->deck;
     }
@@ -31,8 +31,8 @@ class Deck
         return array_shift($this->deck);
     }
 
-    public function shuffleDeck()
+    public function shuffleDeck(): void
     {
-        return shuffle($this->deck);
+        shuffle($this->deck);
     }
 }
