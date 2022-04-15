@@ -408,6 +408,15 @@ nav  li a:focus::after {
     margin: 1vh 0;
 }
 
+.flash-messages-game {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2vh;
+}
+
 .form {
     display: flex;
     flex-wrap: wrap;

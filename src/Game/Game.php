@@ -11,20 +11,9 @@ class Game
 
     public function __construct($deck, $player, $dealer)
     {
-        // $session->set("deck", Deck::shuffleDeck());
-
-        // $session->set("player", new Player());
-        // $session->set("dealer", new Player('dealer'));
-
-        // $deck = Deck::shuffleDeck();
-        // $player = new Player();
-        // $dealer = new Player('dealer');
-
         $this->deck = $deck;
         $this->player = $player;
         $this->dealer = $dealer;
-
-        //self::new();
     }
 
     public function start()
@@ -64,5 +53,32 @@ class Game
             $this->dealer->setCurrentHand($pulledCard);
             $this->dealer->setCurrentScore($pulledCard);
         }
+    }
+
+    public function checkForWinner()
+    {
+        $dealersCurrentScore = $this->dealer->getCurrentScore();
+        $playersCurrentScore = $this->player->getCurrentScore();
+
+        if (
+            $dealersCurrentScore === 17 && $playersCurrentScore === 17
+            || $dealersCurrentScore === 18 && $playersCurrentScore === 18
+            || $dealersCurrentScore === 19 && $playersCurrentScore === 19
+        ) {
+            return 'Dealer won';
+        } elseif (
+            $dealersCurrentScore === 20 && $playersCurrentScore === 20
+            || $dealersCurrentScore === 21 && $playersCurrentScore === 21
+        ) {
+            return 'Shared first place';
+        } elseif ($dealersCurrentScore > 17 && $dealersCurrentScore > $playersCurrentScore)
+        {
+            return 'Dealer won';
+        } elseif ($playersCurrentScore > 17 && $playersCurrentScore > $dealersCurrentScore)
+        {
+            return 'Player won';
+        }
+
+        return '';
     }
 }

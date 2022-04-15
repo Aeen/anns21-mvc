@@ -86,14 +86,19 @@ class GameController extends AbstractController
                 array_push($playerArray, $playerHand[$i]->toString());
             }
 
-            // print_r($dealerArray);
-            // print_r($playerArray);
-
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
+
+            $text = $game->checkForWinner();
+
+            $this->addFlash("info", $text);
+
         } elseif ($hit) {
+            if ($dealerScore < 17) {
+                $game->dealerHit();
+            }
+
             $game->hit();
-            $game->dealerHit();
 
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
@@ -108,6 +113,10 @@ class GameController extends AbstractController
 
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
+
+            $text = $game->checkForWinner();
+
+            $this->addFlash("info", $text);
         } elseif ($stand) {
             $dealerScore = $dealer->getCurrentScore();
 
@@ -129,6 +138,10 @@ class GameController extends AbstractController
 
             $dealerScore = $dealer->getCurrentScore();
             $playerScore = $player->getCurrentScore();
+
+            $text = $game->checkForWinner();
+
+            $this->addFlash("info", $text);
         }
 
 
@@ -139,9 +152,6 @@ class GameController extends AbstractController
             'dealerScore' => $dealerScore,
             'playerScore' => $playerScore
         ];
-
-        // $session->set("dealerHand", $dealerHand);
-        // $session->set("playerHand", $playerHand);
 
         return $this->render('game\play.html.twig', $data);
     }
