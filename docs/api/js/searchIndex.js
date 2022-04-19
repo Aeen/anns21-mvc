@@ -546,6 +546,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-Player.html#method_setCurrentScore"
         },                {
+            "fqsen": "\\App\\Game\\Player\u003A\u003AsetCurrentScoreNum\u0028\u0029",
+            "name": "setCurrentScoreNum",
+            "summary": "",
+            "url": "classes/App-Game-Player.html#method_setCurrentScoreNum"
+        },                {
             "fqsen": "\\App\\Game\\Player\u003A\u003AgetCurrentScore\u0028\u0029",
             "name": "getCurrentScore",
             "summary": "",
