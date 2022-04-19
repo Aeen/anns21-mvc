@@ -21,16 +21,6 @@ class Card
         return [$this->color, $this->value];
     }
 
-    // public function getValue(): array
-    // {
-    //     return [$this->value];
-    // }
-
-    // public function getColor(): array
-    // {
-    //     return [$this->color];
-    // }
-
     public function toString(): string
     {
         return $this->color . " " . $this->value;

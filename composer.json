@@ -87,6 +87,7 @@
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -l 9 src || true",
         "phpcpd": "tools/phpcpd/vendor/bin/phpcpd src || true",
         "phpdoc": "tools/phpdoc/phpdoc",
+        "phpunit": "XDEBUG_MODE=coverage bin/phpunit",
         "fix": [
             "@csfix",
             "@phpcbf",
@@ -119,8 +120,12 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^1.5",
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "6.0.*",
+        "symfony/css-selector": "6.0.*",
         "symfony/debug-bundle": "6.0.*",
         "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "6.0.*",
         "symfony/web-profiler-bundle": "6.0.*"
     }

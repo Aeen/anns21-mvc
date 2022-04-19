@@ -43,13 +43,23 @@ class Player
         $this->currentScore += $pulledCard->getValueOfCard();
     }
 
+    public function setCurrentScoreNum($num): void
+    {
+        $this->currentScore = $num;
+    }
+
     public function getCurrentScore(): int
     {
         return $this->currentScore;
     }
 
-    public static function getPlayer(string $type = 'player'): string
+    // public static function getPlayer(string $type = 'player'): string
+    // {
+    //     return $type;
+    // }
+
+    public function getPlayer(): string
     {
-        return $type;
+        return $this->type;
     }
 }
