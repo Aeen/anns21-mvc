@@ -19,7 +19,7 @@ class CardTest extends TestCase
         $this->assertContains("A", $test);
     }
 
-    public function testToString(): void
+    public function testToString(): void 
     {
         $deck = new Deck;
         $cards = $deck->getCards();
