@@ -12,7 +12,7 @@ class PlayerTest extends TestCase
     public function testGetCurrentScore(): void
     {
         $player = new Player();
-        $deck = new Deck;
+        $deck = new Deck();
         $pulledCard = $deck->drawCard();
         $player->setCurrentScore($pulledCard);
 
@@ -32,7 +32,7 @@ class PlayerTest extends TestCase
     public function testSetCurrentHand(): void
     {
         $player = new Player();
-        $deck = new Deck;
+        $deck = new Deck();
         $pulledCard = $deck->drawCard();
         $player->setCurrentHand($pulledCard);
 
@@ -54,5 +54,4 @@ class PlayerTest extends TestCase
         $this->expectExceptionMessage('Invalid player type.');
         $playerWrong = new Player('playaa');
     }
-
 }

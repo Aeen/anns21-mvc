@@ -11,7 +11,7 @@ class CardTest extends TestCase
 {
     public function testGetDetails(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $cards = $deck->getCards();
 
         $test = $cards[0]->getDetails();
@@ -19,9 +19,9 @@ class CardTest extends TestCase
         $this->assertContains("A", $test);
     }
 
-    public function testToString(): void 
+    public function testToString(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $cards = $deck->getCards();
 
         $this->assertIsString($cards[0]->toString());
@@ -29,7 +29,7 @@ class CardTest extends TestCase
 
     public function testValueOfCards(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $cards = $deck->getCards();
         $test = "A";
         $this->assertEquals(11, $cards[0]->getValueOfCard($test));
@@ -43,10 +43,9 @@ class CardTest extends TestCase
 
     public function testTypeOfCards(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $cards = $deck->getCards();
 
         $this->assertEquals("A", $cards[0]->getTypeOfCard());
     }
-
 }

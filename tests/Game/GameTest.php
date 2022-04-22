@@ -11,29 +11,28 @@ class GameTest extends TestCase
 {
     public function testCreateGame(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
 
-        $this->assertEquals('play', $game->readStand());      
+        $this->assertEquals('play', $game->readStand());
     }
 
     public function testStart(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
         $game->start();
 
         $this->assertEquals(48, count($deck->getCards()));
-      
     }
 
     public function testStand(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
@@ -45,7 +44,7 @@ class GameTest extends TestCase
 
     public function testHit(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
@@ -61,7 +60,7 @@ class GameTest extends TestCase
 
     public function testDealerHit(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
@@ -77,7 +76,7 @@ class GameTest extends TestCase
 
     public function testCheckForWinner(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
@@ -182,7 +181,7 @@ class GameTest extends TestCase
         $res = $game->checkForWinner();
         $exp = 'Both lost';
         $this->assertEquals($exp, $res);
-        
+
 
 
         $player->setCurrentScoreNum(17);
@@ -196,7 +195,7 @@ class GameTest extends TestCase
 
     public function testCheckForWinnerWhilePlaying(): void
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $player = new Player();
         $dealer = new Player('dealer');
         $game = new Game($deck, $player, $dealer);
@@ -266,7 +265,5 @@ class GameTest extends TestCase
         $res = $game->checkForWinnerWhilePlaying();
         $exp = 'Both lost';
         $this->assertEquals($exp, $res);
-        
     }
-
 }
