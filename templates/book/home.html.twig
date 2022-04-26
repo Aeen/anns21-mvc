@@ -1,17 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Library{% endblock %}
+{% block title %}Books{% endblock %}
 
 {% block body %}
 
-    <h1>Library</h1>
+    <h1>Books</h1>
 
 {{ include('./book/navbar.html.twig') }}
-
-<h2>h2 titel</h2>
 <p>
-    Text
+    Välkommen till detta bibliotek. De tre senast inlagda böckerna är:
 </p>
+
+<div class="card-container">
+    {% if books is defined %}
+        {% for book in books|slice(-3) %}
+            <div class="cards">
+                {{ book.id }}
+                {{ book.title }}
+                {{ book.isbn }}
+                {{ book.author }}
+                {{ book.picture }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
 
 
 

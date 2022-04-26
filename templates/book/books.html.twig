@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+
+<h1>Books show</h1>
+
+{{ include('./book/navbar.html.twig') }}
+
+
+
+    <div class="card-container">
+        {% if books is defined %}
+            {% for book in books %}
+                <div class="cards">
+                    {{ book.id }}
+                    {{ book.title }}
+                    {{ book.isbn }}
+                    {{ book.author }}
+                    {{ book.picture }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

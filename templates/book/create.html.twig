@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create book{% endblock %}
+
+{% block body %}
+
+<h1>Create book</h1>
+
+{{ include('./book/navbar.html.twig') }}
+
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<form method="post">
+    <fieldset>
+    <legend>Create book form</legend>
+    <p>
+        <label>Title:
+            <input type="text" name="title" value="">
+        </label>
+    </p>
+    <p>
+        <label>ISBN:
+            <input type="text" name="isbn" value="">
+        </label>
+    </p>
+    <p>
+        <label>Author:
+            <input type="text" name="author" value="">
+        </label>
+    </p>
+    <p>
+        <label>Picture name:
+            <input type="text" name="picture" value="">
+        </label>
+    </p>
+    <p>
+        <input type="submit" value="Spara">
+    </p>
+    </fieldset>
+</form>
+
+{% endblock %}

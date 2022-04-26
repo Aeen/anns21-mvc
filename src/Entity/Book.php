@@ -16,7 +16,7 @@ class Book
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 11)]
+    #[ORM\Column(type: 'string', length: 20)]
     private $isbn;
 
     #[ORM\Column(type: 'string', length: 255)]
