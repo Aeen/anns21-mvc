@@ -465,6 +465,14 @@ nav  li a:focus::after {
     justify-content: center;
 }
 
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
 .cards {
     display: grid;
     align-content: space-between;
@@ -475,6 +483,34 @@ nav  li a:focus::after {
     padding: 5px;
     margin: 0.5vw;
     background-color: white;
+}
+
+.books {
+    display: grid;
+    align-content: space-between;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 250px;
+    padding: 5px;
+    margin: 0.5vw;
+    background-color: white;
+}
+
+.book-container a {
+    color: black;
+    text-decoration: none;
+}
+
+.booktitle {
+    font-size: 1.5em;
+    margin-bottom: 1vh;
+}
+
+.books img {
+    object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+  padding-top: 5px;
 }
 
 .left-card{

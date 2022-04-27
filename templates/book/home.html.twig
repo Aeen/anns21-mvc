@@ -11,16 +11,24 @@
     Välkommen till detta bibliotek. De tre senast inlagda böckerna är:
 </p>
 
-<div class="card-container">
+<div class="book-container">
     {% if books is defined %}
+    {% set picture = "img/nopicture.jpg" %}
         {% for book in books|slice(-3) %}
-            <div class="cards">
-                {{ book.id }}
-                {{ book.title }}
-                {{ book.isbn }}
-                {{ book.author }}
-                {{ book.picture }}
+        <a href="{{ path("book_show_all", {'id': book.id}) }}">
+            <div class="books">
+                <div class="booktitle">
+                    {{ book.id }}:
+                    {{ book.title }}
+                </div>
+                
+                <div>ISBN: {{ book.isbn }}</div>
+                <div>Author: {{ book.author }}</div>
+                <img src="{{ asset(book.picture) }}"
+                onerror="this.onerror=null;this.src='{{ asset(picture) }}';"
+                     alt="Bokbild">
             </div>
+        </a>
         {% endfor %}
     {% endif %}
 </div>

@@ -34,10 +34,13 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/book/create", name="create_book")
+     * @Route(
+     *      "/book/create",
+     *      name="create_book",
+     *      methods={"GET","HEAD"}
+     * )
      */
-    public function createBook(
-        ): Response 
+    public function createBook(): Response 
         {
             return $this->render('book\create.html.twig');
         }
@@ -59,13 +62,13 @@ class BookController extends AbstractController
         $title = $request->request->get('title');
         $isbn  = $request->request->get('isbn');
         $author = $request->request->get('author');
-        $picture  = $request->request->get('picture');
+        $picture = $request->request->get('picture');
 
         $book = new Book();
         $book->setTitle($title);
         $book->setIsbn($isbn);
         $book->setAuthor($author);
-        $book->setPicture($picture);
+        $book->setPicture("img/" . $picture);
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
@@ -113,18 +116,23 @@ class BookController extends AbstractController
     return $this->render('book\books.html.twig', $data);
     }
 
-    // /**
-    //  * @Route("/product/show/{id}", name="product_by_id")
-    //  */
-    // public function showBookById(
-    //     ProductRepository $productRepository,
-    //     int $id
-    // ): Response {
-    //     $products = $productRepository
-    //         ->find($id);
+    /**
+     * @Route("/book/show/{id}", name="book_by_id")
+     */
+    public function showBookById(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+        $book = $bookRepository
+            ->find($id);
 
-    //     return $this->json($products);
-    // }
+            $data = [
+                'title' => 'Books',
+                'books' => $book
+            ];
+        
+            return $this->render('book\books.html.twig', $data);
+    }
 
     // /**
     //  * @Route("/product/delete/{id}", name="product_delete_by_id")
