@@ -468,7 +468,6 @@ nav  li a:focus::after {
 .book-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
     justify-content: center;
     font-family: 'Open Sans', sans-serif;
 }
@@ -480,6 +479,34 @@ nav  li a:focus::after {
     font-family: 'Open Sans', sans-serif;
 }
 
+.center {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons a {
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    background: #F8DBF8;
+}
+
+.buttons a:hover:first-child {
+    background-color: green;
+}
+
+.buttons a:hover {
+    background-color: red;
+    color: white;
+}
 
 .cards {
     display: grid;
@@ -494,8 +521,6 @@ nav  li a:focus::after {
 }
 
 .books {
-    display: grid;
-    align-content: space-between;
     border: 1px solid black;
     border-radius: 2px;
     width: 250px;
@@ -510,15 +535,15 @@ nav  li a:focus::after {
 }
 
 .booktitle {
-    font-size: 1.5em;
+    font-size: 1.25em;
     margin-bottom: 1vh;
 }
 
 .books img {
     object-fit: cover;
-  width: 100%;
-  max-height: 100%;
-  padding-top: 5px;
+    width: 100%;
+    max-height: 100%;
+    padding-top: 5px;
 }
 
 .left-card{

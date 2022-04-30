@@ -30,8 +30,11 @@
 
     </div>
 
-    <a href="{{ path("update_book", {'id': book.id} ) }}">Update book</a>
-    <a href="{{ path("delete_book", {'id': book.id} ) }}">Delete book</a>
+    <div class="buttons">
+        <a href="{{ path("update_book", {'id': book.id} ) }}">UPDATE</a>
+        <a href="{{ path("delete_book", {'id': book.id} ) }}">DELETE</a>
+    </div>
+
     {% endfor %}
     {% endif %}
 
