@@ -19,18 +19,18 @@ class BookController extends AbstractController
     public function home(
         EntityManagerInterface $entityManager
     ): Response {
-    $books = $entityManager
+        $books = $entityManager
         ->getRepository(Book::class)
         ->findAll();
 
-    // return $this->json($products);
+        // return $this->json($products);
 
-    $data = [
+        $data = [
         'title' => 'Books',
         'books' => $books
-    ];
+        ];
 
-    return $this->render('book\home.html.twig', $data);
+        return $this->render('book\home.html.twig', $data);
     }
 
     /**
@@ -40,10 +40,10 @@ class BookController extends AbstractController
      *      methods={"GET","HEAD"}
      * )
      */
-    public function createBook(): Response 
-        {
-            return $this->render('book\create.html.twig');
-        }
+    public function createBook(): Response
+    {
+        return $this->render('book\create.html.twig');
+    }
 
     /**
      * @Route(
@@ -55,8 +55,7 @@ class BookController extends AbstractController
     public function createProcess(
         ManagerRegistry $doctrine,
         Request $request
-        ): Response
-    {
+    ): Response {
         $entityManager = $doctrine->getManager();
 
         $title = $request->request->get('title');
@@ -95,17 +94,17 @@ class BookController extends AbstractController
     public function showAllBooks(
         EntityManagerInterface $entityManager
     ): Response {
-    $books = $entityManager
+        $books = $entityManager
         ->getRepository(Book::class)
         ->findAll();
 
-    //var_dump($books);
-    $data = [
+        //var_dump($books);
+        $data = [
         'title' => 'Show all books',
         'books' => $books
-    ];
+        ];
 
-    return $this->render('book\books.html.twig', $data);
+        return $this->render('book\books.html.twig', $data);
     }
 
     /**
@@ -123,7 +122,7 @@ class BookController extends AbstractController
             'title' => 'Book by ID',
             'books' => $books
         ];
-        
+
         return $this->render('book\onebook.html.twig', $data);
     }
 
@@ -145,7 +144,7 @@ class BookController extends AbstractController
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id ' . $id
             );
         }
 
@@ -166,8 +165,7 @@ class BookController extends AbstractController
     public function updateBook(
         BookRepository $bookRepository,
         int $id
-    ): Response 
-        {
+    ): Response {
         $books[] = $bookRepository
             ->find($id);
 
@@ -177,8 +175,8 @@ class BookController extends AbstractController
             'books' => $books
         ];
 
-            return $this->render('book\update.html.twig', $data);
-        }
+        return $this->render('book\update.html.twig', $data);
+    }
 
     /**
      * @Route(
@@ -190,8 +188,7 @@ class BookController extends AbstractController
     public function updateProcess(
         ManagerRegistry $doctrine,
         Request $request
-        ): Response
-    {
+    ): Response {
         $entityManager = $doctrine->getManager();
 
         $id = $request->request->get('id');
@@ -204,7 +201,7 @@ class BookController extends AbstractController
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id ' . $id
             );
         }
 
@@ -221,7 +218,7 @@ class BookController extends AbstractController
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$id
+                'No book found for id ' . $id
             );
         }
 

@@ -73,10 +73,9 @@ class Book
 
     public function setPictureMap(?string $picture): self
     {
-
-        if(strpos($picture, 'img/') !== false){
+        if (strpos($picture, 'img/') !== false) {
             $this->picture = $picture;
-        } else{
+        } else {
             $this->picture = "img/" . $picture;
         }
 
@@ -85,10 +84,9 @@ class Book
 
     public function setPictureEnd(?string $picture): self
     {
-
-        if(strpos($picture, '.') !== false){
+        if (strpos($picture, '.') !== false) {
             $this->picture = $picture;
-        } else{
+        } else {
             $this->picture = $picture . '.jpg';
         }
 
@@ -97,7 +95,6 @@ class Book
 
     public function setPicture(?string $picture): self
     {
-
         $this->picture = $picture;
 
         return $this;
