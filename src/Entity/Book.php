@@ -71,8 +71,33 @@ class Book
         return $this->picture;
     }
 
+    public function setPictureMap(?string $picture): self
+    {
+
+        if(strpos($picture, 'img/') !== false){
+            $this->picture = $picture;
+        } else{
+            $this->picture = "img/" . $picture;
+        }
+
+        return $this;
+    }
+
+    public function setPictureEnd(?string $picture): self
+    {
+
+        if(strpos($picture, '.') !== false){
+            $this->picture = $picture;
+        } else{
+            $this->picture = $picture . '.jpg';
+        }
+
+        return $this;
+    }
+
     public function setPicture(?string $picture): self
     {
+
         $this->picture = $picture;
 
         return $this;

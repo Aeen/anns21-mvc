@@ -15,15 +15,13 @@
     {% if books is defined %}
     {% set picture = "img/nopicture.jpg" %}
         {% for book in books|slice(-3) %}
-        <a href="{{ path("book_show_all", {'id': book.id}) }}">
+        <a href="{{ path("book_by_id", {'id': book.id} ) }}">
             <div class="books">
                 <div class="booktitle">
                     {{ book.id }}:
                     {{ book.title }}
                 </div>
-                
-                <div>ISBN: {{ book.isbn }}</div>
-                <div>Author: {{ book.author }}</div>
+
                 <img src="{{ asset(book.picture) }}"
                 onerror="this.onerror=null;this.src='{{ asset(picture) }}';"
                      alt="Bokbild">

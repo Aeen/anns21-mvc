@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update book{% endblock %}
+
+{% block body %}
+
+<h1>Update book</h1>
+
+{{ include('./book/navbar.html.twig') }}
+
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
+{% if books is defined %}
+{% set picture = "img/nopicture.jpg" %}
+{% for book in books %}
+
+<div class="update-container">
+
+    <div class="books">
+        <img src="{{ asset(book.picture) }}"
+        onerror="this.onerror=null;this.src='{{ asset(picture) }}';"
+             alt="Bokbild">
+    </div>
+
+<form method="post">
+    <fieldset>
+    <legend>Update book</legend>
+    <p>
+        <label>Id:<br>
+            <input type="text" name="id" value="{{ book.id }}" readonly>
+        </label>
+    </p>
+    <p>
+        <label>Title:<br>
+            <input type="text" name="title" value="{{ book.title }}">
+        </label>
+    </p>
+    <p>
+        <label>ISBN:<br>
+            <input type="text" name="isbn" value="{{ book.isbn }}">
+        </label>
+    </p>
+    <p>
+        <label>Author:<br>
+            <input type="text" name="author" value="{{ book.author }}">
+        </label>
+    </p>
+    <p>
+        <label>Picture.jpg:<br>
+            <input type="text" name="picture" value="{{ book.picture }}">
+        </label>
+    </p>
+    <p>
+        <input type="submit" value="Spara">
+    </p>
+    </fieldset>
+</form>
+
+</div>
+
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock %}

@@ -19,14 +19,20 @@
                         {{ book.id }}:
                         {{ book.title }}
                     </div>
-
+                    
+                    <div>ISBN: {{ book.isbn }}</div>
+                    <div>Author: {{ book.author }}</div>
                     <img src="{{ asset(book.picture) }}"
                     onerror="this.onerror=null;this.src='{{ asset(picture) }}';"
                          alt="Bokbild">
                 </div>
             </a>
-            {% endfor %}
-        {% endif %}
+
     </div>
+
+    <a href="{{ path("update_book", {'id': book.id} ) }}">Update book</a>
+    <a href="{{ path("delete_book", {'id': book.id} ) }}">Delete book</a>
+    {% endfor %}
+    {% endif %}
 
 {% endblock %}
