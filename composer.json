@@ -88,7 +88,7 @@
         "phpcsTest": "tools/php-codesniffer/vendor/bin/phpcs --standard=PSR12 tests",
         "phpcbfTest": "tools/php-codesniffer/vendor/bin/phpcbf --standard=PSR12 tests",
         "phpmd": "tools/phpmd/vendor/bin/phpmd src text phpmd.xml || true",
-        "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -l 9 src || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -l 3 src || true",
         "phpcpd": "tools/phpcpd/vendor/bin/phpcpd src || true",
         "phpdoc": "tools/phpdoc/phpdoc",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
