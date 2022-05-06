@@ -30,9 +30,9 @@ class Card
     {
         if (strtolower($this->value) === 'a') {
             $value = 11; // @TODO An Ace can be either 1 or 11; player choice
-        } else {
-            $value = is_numeric($this->value) ? $this->value : 10;
-        }
+        } 
+        
+        $value = is_numeric($this->value) ? $this->value : 10;
 
         return $value;
     }
