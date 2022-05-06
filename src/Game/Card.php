@@ -30,11 +30,18 @@ class Card
     {
         if (strtolower($this->value) === 'a') {
             $value = 11; // @TODO An Ace can be either 1 or 11; player choice
-        } 
-        
-        $value = is_numeric($this->value) ? $this->value : 10;
+        } else {
+            $value = is_numeric($this->value) ? $this->value : 10;
+        }
 
-        return $value;
+        if(!intval($value)){
+            throw new Exception("Not Int", 404);
+          }
+          else{
+            return $value;
+          }
+
+        
     }
 
     public function getTypeOfCard(): string
