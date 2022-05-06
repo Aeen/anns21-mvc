@@ -35,7 +35,7 @@ class Card
         }
 
         if(!intval($value)){
-            throw new Exception("Not Int", 404);
+            throw new Exception("Not Int");
           }
           else{
             return $value;
