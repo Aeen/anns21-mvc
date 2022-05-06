@@ -1,15 +1,16 @@
 ## Kmom06 ##
 
 ### Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade? ###
-
+Jag fastnade inte riktigt för phpmetrics. Jag tycker absolut att den kan vara värdefull och att den ger en överblick. Framförallt över komplexa klasser och metoder. Om det var något särskilt jag skulle säga att jag fastnade för så var det nog violations-sidan. Där framkom om det var klassen och/eller metoderna som var komplexa. Där fanns även små beskrivningar men inget mer ingående om min kod, utan bara mer generellt.
 
 
 ### Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget? ###
-
+Scrutinizer uppskattade jag mer. Den var mer exakt med vad den ansågs kunde förbättras och bra beskrivningar om varför, och var i koden. Det framkom tydligt vilken kod som var testad och gav ett generellt kodbetyg. Man kunde också se vilka klasser och/eller metoder som drog ner resultatet. Vilket var trevligt och överskådligt. Jag fick 21% kodtäckning, men det beror också på att jag enbart skrivit tester för Game-delen. Den generella kodkvaliten hamnade på 8.68 efter att jag exkluderat /tools :). Det kändes ändå bra. Jag blev däremot förvånad att kodkvaliten inte blev mer än 8.69 efter att alla (förutom 1) issues fixades till. Men det var lärorikt att se vad komplexiteten betyder, och hur "lite" dessa issues påverkade kvaliten.
 
 
 ### Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du? ###
-
+Jag tror absolut att det på något vis kan påvisas med denna typen av tester. Framförallt när det gäller komplexiteten och de bitarna. Jag tycker det är bra att det finns vissa mått att eftersträva för att göra koden lättare att underhålla och mindre komplex. Sen är det som med allt annat att man måste ta det med en nypa salt. Men jag tror absolut att det säger något och att det är ett bra komplement.
 
 
 ### Vilken är din TIL för detta kmom? ###
+Kodkvalitetstester får jag nog säga är min TIL för detta kmom, och vilken typ av information man kan få av dessa tester.
