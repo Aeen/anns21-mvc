@@ -13,10 +13,10 @@
         {% if books is defined %}
         {% set picture = "img/nopicture.jpg" %}
             {% for book in books %}
-            <a href="{{ path("book_by_id", {'id': book.id} ) }}">
+            <a href="{{ path("book_by_id", {'idNum': book.idNum} ) }}">
                 <div class="books">
                     <div class="booktitle">
-                        {{ book.id }}:
+                        {{ book.idNum }}:
                         {{ book.title }}
                     </div>
 

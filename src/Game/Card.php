@@ -33,9 +33,8 @@ class Card
         } else {
             $value = is_numeric($this->value) ? $this->value : 10;
         }
-        
+
         return $value;
-        
     }
 
     public function getTypeOfCard(): string

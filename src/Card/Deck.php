@@ -13,7 +13,6 @@ class Deck
 
     public function __construct()
     {
-
         $colorCount = count($this->color);
         $valueCount = count($this->value);
 

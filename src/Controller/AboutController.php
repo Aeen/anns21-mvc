@@ -16,7 +16,7 @@ class AboutController extends AbstractController
         return $this->render('pages\about.html.twig');
     }
 
-        /**
+    /**
      * @Route("/metrics", name="metrics")
      */
     public function metrics(): Response

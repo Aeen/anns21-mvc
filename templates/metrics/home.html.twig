@@ -68,21 +68,43 @@
 
 <h3 class="rubrikfarg">Förbättringar</h3>
 <p>
-    Scrutinizer berättar bland annat att man inte ska använda "count() as part of the test condition". Så det kommer jag förbättre, och definiera storleken innan den används. Jag är osäker på hur det kommer påverka resultatet, men det kommer jag ta reda på eftersom det förekommer på en hel del ställen.
+    Scrutinizer berättar bland annat att man inte ska använda "count() as part of the test condition". Så det kommer jag förbättra, och definiera storleken innan den används. Jag är osäker på hur det kommer påverka resultatet, men det kommer jag ta reda på eftersom det förekommer på en hel del ställen.
     <br><br>
     På några ställen får jag förslaget att använda parenteser (Consider adding parentheses for clarity), så det vill jag testa att lägga till bara för att se om det gör någon skillnad.
     <br><br>
     Jag tänkte även ta bort "död-kod" som identifierats, för att se hur det påverkar resultatet.
     <br><br>
-    (The expression return $value could return the type string which is incompatible with the type-hinted return integer. Consider adding an additional type-check to rule them out). Jag kommer även lägga till en kontroll för returvärdet.
+    (The expression return $value could return the type string which is incompatible with the type-hinted return integer. Consider adding an additional type-check to rule them out). Jag kommer även att fixa den för att se vad det betyder för kodvärdena.
 </p>
 
+<p>
+    Mätvärdena ändrades i princip inte alls. 0.01 totalt ökade scrutinizers procent. Vilket förvånade mig enormt. Det enda som ändrades vad jag kunde se på Phpmetrics rapport var antalet rader. 
+</p>
+
+<div class="metrics-img">
+    <img src="{{ asset("img/scrutinizer-done.png") }}" alt="Scrutinizer överblick">
+</div>
+<div class="metrics-img">
+    <img src="{{ asset("img/issues.png") }}" alt="Scrutinizer överblick">
+</div>
 
 
 <h3 class="rubrikfarg">Diskussion</h3>
 <p>
     Jag tycker att Phpmetrics är svårare att se "vad som behöver göras". Jag har därför valt att fokusera på Scrutinizers påpekanden och förslag på förbättringar. Först glömde jag kolla composer phpunit innan jag commitade, så visade sig att jag skapade en ny bug. Sen tog det ett tag att förstå hur jag skulle bli av med den på samtidigt som jag fixade det jag hade tänkt mig att fixa. 
 </p>
+<p>
+    Jag valde alltså att förbättra alla de issues som fanns, förutom den i /kernel, för att se hur dessa "småsaker" påverkar resultatet. Och jag är faktiskt förvånad över hur lite det påverkar. Jag vet att där är saker som stora metoder/klasser som skulle kunna förbättras för att minska komplexiteten, men jag trodde ändå att mindre saker skulle ha större påverkan.
+</p>
+<p>
+    Jag ser fördelar med dessa verktyg, men en nackdel som det åtminstone kan bli för mig (som oerfaren åtminstone) är att sålla bland påpekanden och se vad som är av betydelse och vad som inte är det. Det är såklart ett "problem" som jag tror försvinner när man blir mer medveten om sin kod och får mer erfarenhet. Men jag vill ju gärna "fixa allt". Och ibland ger det en nya problem, kanske t.o.m värre. Men det får mig ändå att tänka till.
+</p>
+<p>
+    Jag kommer ta till mig av komplexiteten när jag fortsättningsvis skriver kod, och verkligen se till att metoderna är små och inte har flertaler olika kontroller/if-satser osv. Jag tror nämligen att det påverkar min kodkvalitet enormt.
+</p>
+
+
+
 
 
 
