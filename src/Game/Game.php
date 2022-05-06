@@ -80,53 +80,53 @@ class Game
         $playersCurrentScore = $this->player->getCurrentScore();
 
         if (
-            $dealersCurrentScore === 17 && $playersCurrentScore === 17
-            || $dealersCurrentScore === 18 && $playersCurrentScore === 18
-            || $dealersCurrentScore === 19 && $playersCurrentScore === 19
+            ($dealersCurrentScore === 17 && $playersCurrentScore === 17)
+            || ($dealersCurrentScore === 18 && $playersCurrentScore === 18)
+            || ($dealersCurrentScore === 19 && $playersCurrentScore === 19)
         ) {
             return 'Dealer won';
         } elseif (
-            $dealersCurrentScore === 20 && $playersCurrentScore === 20
-            || $dealersCurrentScore === 21 && $playersCurrentScore === 21
+            ($dealersCurrentScore === 20 && $playersCurrentScore === 20)
+            || ($dealersCurrentScore === 21 && $playersCurrentScore === 21)
         ) {
             return 'Shared first place';
         } elseif (
-            $playersCurrentScore === 21
-            && $dealersCurrentScore != 21
+            ($playersCurrentScore === 21)
+            && ($dealersCurrentScore != 21)
         ) {
             return 'BlackJack for player';
         } elseif (
-            $dealersCurrentScore === 21
-            && $playersCurrentScore != 21
+            ($dealersCurrentScore === 21)
+            && ($playersCurrentScore != 21)
         ) {
             return 'BlackJack for dealer';
         } elseif (
-            $playersCurrentScore <= 21
-            && $dealersCurrentScore > 21
+            ($playersCurrentScore <= 21)
+            && ($dealersCurrentScore > 21)
         ) {
             return 'Player won';
         } elseif (
-            $dealersCurrentScore <= 21
-            && $playersCurrentScore > 21
+            ($dealersCurrentScore <= 21)
+            && ($playersCurrentScore > 21)
         ) {
             return 'Dealer won';
         } elseif (
-            $dealersCurrentScore > 17
-            && $dealersCurrentScore <= 21
-            && $dealersCurrentScore > $playersCurrentScore
+            ($dealersCurrentScore > 17)
+            && ($dealersCurrentScore <= 21)
+            && ($dealersCurrentScore > $playersCurrentScore)
             && ($playersCurrentScore >= 17 || $this->stand === 'stand')
         ) {
             return 'Dealer won';
         } elseif (
-            $playersCurrentScore > 17
-            && $playersCurrentScore <= 21
-            && $playersCurrentScore > $dealersCurrentScore
-            && $dealersCurrentScore >= 17
+            ($playersCurrentScore > 17)
+            && ($playersCurrentScore <= 21)
+            && ($playersCurrentScore > $dealersCurrentScore)
+            && ($dealersCurrentScore >= 17)
         ) {
             return 'Player won';
         } elseif (
-            $playersCurrentScore > 21
-            && $dealersCurrentScore > 21
+            ($playersCurrentScore > 21)
+            && ($dealersCurrentScore > 21)
         ) {
             return 'Both lost';
         }
@@ -140,33 +140,33 @@ class Game
         $playersCurrentScore = $this->player->getCurrentScore();
 
         if (
-            $dealersCurrentScore === 20 && $playersCurrentScore === 20
-            || $dealersCurrentScore === 21 && $playersCurrentScore === 21
+            ($dealersCurrentScore === 20 && $playersCurrentScore === 20)
+            || ($dealersCurrentScore === 21 && $playersCurrentScore === 21)
         ) {
             return 'Shared first place';
         } elseif (
-            $playersCurrentScore === 21
-            && $dealersCurrentScore != 21
+            ($playersCurrentScore === 21)
+            && ($dealersCurrentScore != 21)
         ) {
             return 'BlackJack for player';
         } elseif (
-            $dealersCurrentScore === 21
-            && $playersCurrentScore != 21
+            ($dealersCurrentScore === 21)
+            && ($playersCurrentScore != 21)
         ) {
             return 'BlackJack for dealer';
         } elseif (
-            $playersCurrentScore <= 21
-            && $dealersCurrentScore > 21
+            ($playersCurrentScore <= 21)
+            && ($dealersCurrentScore > 21)
         ) {
             return 'Player won';
         } elseif (
-            $dealersCurrentScore <= 21
-            && $playersCurrentScore > 21
+            ($dealersCurrentScore <= 21)
+            && ($playersCurrentScore > 21)
         ) {
             return 'Dealer won';
         } elseif (
-            $playersCurrentScore > 21
-            && $dealersCurrentScore > 21
+            ($playersCurrentScore > 21)
+            && ($dealersCurrentScore > 21)
         ) {
             return 'Both lost';
         }

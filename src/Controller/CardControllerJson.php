@@ -20,7 +20,9 @@ class CardControllerJson
         $cards = new \App\Card\Deck();
         $deck = $cards->getCards();
 
-        for ($i = 0; $i < count($deck); $i++) {
+        $deckCount = count($deck);
+
+        for ($i = 0; $i < $deckCount; $i++) {
             array_push($cardArray, $deck[$i]->toString());
         }
 
