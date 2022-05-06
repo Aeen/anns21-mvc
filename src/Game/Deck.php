@@ -13,9 +13,12 @@ class Deck
 
     public function __construct()
     {
+        $colorCount = count($this->color);
+        $valueCount = count($this->value);
+
         $this->deck = [];
-        for ($i = 0; $i < count($this->color); $i++) {
-            for ($j = 0; $j < count($this->value); $j++) {
+        for ($i = 0; $i < $colorCount; $i++) {
+            for ($j = 0; $j < $valueCount; $j++) {
                 array_push($this->deck, new Card($this->color[$i], $this->value[$j]));
             }
         }
