@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651836215">
-  <project timestamp="1651836215">
+<coverage generated="1651837174">
+  <project timestamp="1651837174">
     <file name="/mnt/c/Users/anna/desktop/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="7" coveredelements="0"/>
@@ -693,14 +693,14 @@
       <line num="26" type="stmt" count="1"/>
       <line num="29" type="method" name="getValueOfCard" visibility="public" complexity="4" crap="4.07" count="5"/>
       <line num="31" type="stmt" count="5"/>
-      <line num="32" type="stmt" count="4"/>
+      <line num="32" type="stmt" count="5"/>
       <line num="34" type="stmt" count="2"/>
       <line num="37" type="stmt" count="5"/>
       <line num="38" type="stmt" count="0"/>
       <line num="41" type="stmt" count="5"/>
-      <line num="47" type="method" name="getTypeOfCard" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="49" type="stmt" count="1"/>
-      <metrics loc="52" ncloc="48" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="16" coveredelements="14"/>
+      <line num="45" type="method" name="getTypeOfCard" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <metrics loc="50" ncloc="46" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="16" coveredelements="14"/>
     </file>
     <file name="/mnt/c/Users/anna/desktop/dbwebb-kurser/mvc/me/report/src/Game/Deck.php">
       <class name="App\Game\Deck" namespace="global">
@@ -821,6 +821,12 @@
       <line num="174" type="stmt" count="1"/>
       <metrics loc="177" ncloc="177" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="88" coveredstatements="88" elements="96" coveredelements="96"/>
     </file>
+    <file name="/mnt/c/Users/anna/desktop/dbwebb-kurser/mvc/me/report/src/Game/GameException.php">
+      <class name="GameException" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="11" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
     <file name="/mnt/c/Users/anna/desktop/dbwebb-kurser/mvc/me/report/src/Game/Player.php">
       <class name="App\Game\Player" namespace="global">
         <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="21" coveredelements="21"/>
@@ -886,6 +892,6 @@
       <line num="46" type="stmt" count="0"/>
       <metrics loc="79" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="31" loc="2120" ncloc="1796" classes="30" methods="108" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="591" coveredstatements="120" elements="699" coveredelements="146"/>
+    <metrics files="32" loc="2129" ncloc="1802" classes="30" methods="108" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="591" coveredstatements="120" elements="699" coveredelements="146"/>
   </project>
 </coverage>

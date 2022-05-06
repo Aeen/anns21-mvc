@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Game;
 
 /**
  * Exception class for GameException.

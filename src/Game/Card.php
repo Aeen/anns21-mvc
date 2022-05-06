@@ -35,12 +35,10 @@ class Card
         }
 
         if(!intval($value)){
-            throw new Exception("Not Int");
-          }
-          else{
-            return $value;
-          }
-
+            throw new GameException("Not integer.");
+        }
+        
+        return $value;
         
     }
 
