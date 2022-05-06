@@ -10,52 +10,73 @@
 
 
 
-<h3>Introduktion</h3>
+<h3 class="rubrikfarg">Introduktion</h3>
 <h4>Coverage</h4>
 <p>
-    Kodtäckning signalerar att 
+    Kodtäckning signalerar hur mycket man har jobbat med enhetstester. Hur pass stor del kod som täcks av enhetstesterna. Det man bör ha i åtanke är att den inte tar hänsyn till vilka eventuella scenario som testas i koden, enbart hur många rader som gås igenom. Med det sagt behöver koden inte ha en verklig kodtäckning vad gäller alla möjliga scenario, bara för att det står 100%. För Game har jag 100% täckning (av rader) då vi skrev test för dessa i tidgare kmom. Om vi däremot kollar på den totala procenten som Scrutinizer presenterar så är det ynka 26% för hela sidan, eftersom inga andra test skrivits.
 </p>
 
 <h4>Complexity</h4>
 <p>
-    Desto fler beslutspunkter som är i koden, desto mer komplex kod blir det. Ett sätt att visualisera det är att se hur koden är tabbad. Desto mer tabbad kod, desto fler beslutspunkter finns det. Om en metod har mer än 10 beslutspunkter så är det bra att se över metoden och dess komplexitet.
+    Desto fler beslutspunkter som är i koden, desto mer komplex kod blir det. Ett sätt att visualisera det är att se hur koden är tabbad. Desto mer tabbad kod, desto fler beslutspunkter finns det. Om en metod har mer än 10 beslutspunkter så är det bra att se över metoden och dess komplexitet. Jag har några metoder som är komplexa. Bland annat när jag kontrollerar vem som vann. Den metoden hade kunnat delats upp. App/Game/Game har exempelvis 56 i komplexititet enligt Scrutinizer. 
 </p>
 
 <h4>Cohesion</h4>
 <p>
-    Kohesion är ett mätvärde för hur bra koden hänger ihop. En klass eller metod med hög kohesion är självständig och ämnad för något specifikt och har inte flera ansvarsområden. Kohesion innebär således en samverkan och att metoderna utbyter data med varandra när de löser en uppgift. Desto mer en metod fokuserar på en enda uppgift, desto enklare blir det att döpa och förstå koden, men även att ändra/underhålla koden.
+    Kohesion är ett mätvärde för hur bra koden hänger ihop. En klass eller metod med hög kohesion är självständig och ämnad för något specifikt och har inte flera ansvarsområden. Kohesion innebär således en samverkan och att metoderna utbyter data med varandra när de löser en uppgift. Desto mer en metod fokuserar på en enda uppgift, desto enklare blir det att döpa och förstå koden, men även att ändra/underhålla koden. Jag tycker att det mesta av min kod är enkel. Det är många getters och setter exempelvis.
 </p>
 
 <h4>Coupling</h4>
 <p>
-    Koppling har att göra med hur många beroende en klass har till andra klasser. Lösa kopplingar är bra eftersom det blir lättare att jobba med klasser utan externa beroenden. Så fort det blir hårda kopplingar och fler beroenden så blir det svårare att underhålla.
+    Koppling har att göra med hur många beroende en klass har till andra klasser. Lösa kopplingar är bra eftersom det blir lättare att jobba med klasser utan externa beroenden. Så fort det blir hårda kopplingar och fler beroenden så blir det svårare att underhålla. Min kortlek har kanske lite hårdare koppling mellan sig, än exempelvis Player och Game.
 </p>
 
 
 
-<h3>Phpmetrics</h3>
+<h3 class="rubrikfarg">Phpmetrics</h3>
 <p>
-    Text
+    Phpmetrics identifierar 10 violations. 7 varningar och 3 errors. 
+    App/Game/Game anses både vara en för komplex klass, men även med komplexa metoder. Det föreslås att exempelvis metoder, eller delar av klassen, delas upp. Även App/Game/GameController anses ha för komplexa metoder, och även där borde koden minskas, eventuellt genom att flytta över kod till klasser och ut från kontrollern. Vad gäller koppling så fick App/Game/Game en 1:a för afferent coupling (ca), vilket innebär att en annan klass förlitar sig på Game. LCOM (Lack of cohesion of methods) får 1 på App/Game/Game. App\Controller\ProductController får hela 4 för LCOM. App/Game/Game får även hög siffra för volym, 1549.04.
 </p>
+<div class="metrics-img">
+    <img src="{{ asset("img/phpmetrics1.png") }}" alt="Phpmetrics överblick">
+</div>
+<div class="metrics-img">
+    <img src="{{ asset("img/phpmetrics2.png") }}" alt="Phpmetrics violations">
+</div>
 
 
 
-<h3>Scrutinizer</h3>
+
+
+<h3 class="rubrikfarg">Scrutinizer</h3>
 <p>
-    Text
+    Jag råkade först få med /tools i bedömningen, men efter att den tagits bort så fick jag 8.78 i betyg. Vilket ändå känns bra, med tanke på att jag inte direkt har någon tidigare erfarenhet varken av objektorienterad programmering eller php, mer än det som varit i detta kurspaket. App/Game/Game har en komplexitet på 56, vilket är en hel del, Storleken hamnar också på 170, vilket är betydligt mer än än de flesta andra. Kodtäckningen hamnar på 100%, vilket var väntat efter kursmomentet med enhetstester. Jag hittar inga specifika uppgifter om coupling och cohesion? i denna rapport. 
 </p>
+<div class="metrics-img">
+    <img src="{{ asset("img/scrutinizer2.png") }}" alt="Scrutinizer överblick">
+</div>
+<div class="metrics-img">
+    <img src="{{ asset("img/scrutinizer1.png") }}" alt="Scrutinizer överblick">
+</div>
+<div class="metrics-img">
+    <img src="{{ asset("img/scrutinizer3.png") }}" alt="Scrutinizer överblick">
+</div>
 
 
 
 
-<h3>Förbättringar</h3>
+<h3 class="rubrikfarg">Förbättringar</h3>
 <p>
-    Text
+    Scrutinizer berättar bland annat att man inte ska använda "count() as part of the test condition". Så det kommer jag förbättre, och definiera storleken innan den används. Jag är osäker på hur det kommer påverka resultatet, men det kommer jag ta reda på eftersom det förekommer på en hel del ställen.
+    <br><br>
+    På några ställen får jag förslaget att använda parenteser (Consider adding parentheses for clarity), så det vill jag testa att lägga till bara för att se om det gör någon skillnad.
+    <br><br>
+    Jag tänkte även ta bort "död-kod" som identifierats, för att se hur det påverkar resultatet.
 </p>
 
 
-
-<h3>Diskussion</h3>
+<h3 class="rubrikfarg">Diskussion</h3>
 <p>
     Text
 </p>

@@ -37,7 +37,9 @@ class CardController extends AbstractController
         $cards = new \App\Card\Deck();
         $deck = $cards->getCards();
 
-        for ($i = 0; $i < count($deck); $i++) {
+        $deckCount = count($deck);
+
+        for ($i = 0; $i < $deckCount; $i++) {
             array_push($cardArray, $deck[$i]->toString());
         }
 
@@ -64,7 +66,9 @@ class CardController extends AbstractController
         $cards = new \App\Card\DeckWith2Jokers();
         $deck = $cards->getCards();
 
-        for ($i = 0; $i < count($deck); $i++) {
+        $deckCount = count($deck);
+
+        for ($i = 0; $i < $deckCount; $i++) {
             array_push($cardArray, $deck[$i]->toString());
         }
 
@@ -89,7 +93,9 @@ class CardController extends AbstractController
 
         shuffle($deck);
 
-        for ($i = 0; $i < count($deck); $i++) {
+        $deckCount = count($deck);
+
+        for ($i = 0; $i < $deckCount; $i++) {
             array_push($cardArray, $deck[$i]->toString());
         }
 
@@ -115,7 +121,8 @@ class CardController extends AbstractController
         Request $request,
         SessionInterface $session
     ): response {
-        $deck = $session->get("deck") ?? new \App\Card\Deck();
+        $deck = $session->get("deck");
+        //$deck = $session->get("deck") ?? new \App\Card\Deck();
         $num  = $request->request->get('number') ?? 1;
         $cardArray = [];
         $printArray = [];
@@ -129,7 +136,9 @@ class CardController extends AbstractController
                 array_push($cardArray, array_shift($deck));
             }
 
-            for ($i = 0; $i < count($cardArray); $i++) {
+            $cardCount = count($cardArray);
+
+            for ($i = 0; $i < $cardCount; $i++) {
                 array_push($printArray, $cardArray[$i]->toString());
             }
         } elseif ($numCards == 0) {
@@ -169,7 +178,8 @@ class CardController extends AbstractController
         Request $request,
         SessionInterface $session
     ): response {
-        $deck = $session->get("deck") ?? new \App\Card\Deck();
+        //$deck = $session->get("deck");
+        //$deck = $session->get("deck") ?? new \App\Card\Deck();
 
         $num  = $request->request->get('number') ?? 1;
 
@@ -187,7 +197,9 @@ class CardController extends AbstractController
                 array_push($cardArray, array_shift($deck));
             }
 
-            for ($i = 0; $i < count($cardArray); $i++) {
+            $cardCount = count($cardArray);
+
+            for ($i = 0; $i < $cardCount; $i++) {
                 array_push($printArray, $cardArray[$i]->toString());
             }
         } elseif ($numCards == 0) {
@@ -254,7 +266,8 @@ class CardController extends AbstractController
 
                 unset($stringArray);
                 $stringArray = array();
-                for ($i = 0; $i < count($cardArray); $i++) {
+                $cardCount = count($cardArray);
+                for ($i = 0; $i < $cardCount; $i++) {
                     array_push($stringArray, $cardArray[$i]->toString());
                 }
 

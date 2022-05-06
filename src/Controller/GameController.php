@@ -78,11 +78,14 @@ class GameController extends AbstractController
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
 
-            for ($i = 0; $i < count($dealerHand); $i++) {
+            $dealerCount = count($dealerHand);
+            $playerCount = count($playerHand);
+
+            for ($i = 0; $i < $dealerCount; $i++) {
                 array_push($dealerArray, $dealerHand[$i]->toString());
             }
 
-            for ($i = 0; $i < count($playerHand); $i++) {
+            for ($i = 0; $i < $playerCount; $i++) {
                 array_push($playerArray, $playerHand[$i]->toString());
             }
 
@@ -105,11 +108,14 @@ class GameController extends AbstractController
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
 
-            for ($i = 0; $i < count($dealerHand); $i++) {
+            $dealerCount = count($dealerHand);
+            $playerCount = count($playerHand);
+
+            for ($i = 0; $i < $dealerCount; $i++) {
                 array_push($dealerArray, $dealerHand[$i]->toString());
             }
 
-            for ($i = 0; $i < count($playerHand); $i++) {
+            for ($i = 0; $i < $playerCount; $i++) {
                 array_push($playerArray, $playerHand[$i]->toString());
             }
 
@@ -146,11 +152,14 @@ class GameController extends AbstractController
             $dealerHand = $dealer->getCurrentHand();
             $playerHand = $player->getCurrentHand();
 
-            for ($i = 0; $i < count($dealerHand); $i++) {
+            $dealerCount = count($dealerHand);
+            $playerCount = count($playerHand);
+
+            for ($i = 0; $i < $dealerCount; $i++) {
                 array_push($dealerArray, $dealerHand[$i]->toString());
             }
 
-            for ($i = 0; $i < count($playerHand); $i++) {
+            for ($i = 0; $i < $playerCount; $i++) {
                 array_push($playerArray, $playerHand[$i]->toString());
             }
 
