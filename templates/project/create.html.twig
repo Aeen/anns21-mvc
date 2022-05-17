@@ -1,0 +1,24 @@
+{% extends 'project.html.twig' %}
+
+{% block title %}Project Game{% endblock %}
+
+{% block body %}
+
+<h1>Börja spela</h1>
+
+<form method="post">
+    <fieldset>
+    <legend>Börja spela</legend>
+    <p>
+        <label>Namn:<br>
+            <input type="text" name="name" value="">
+        </label>
+    </p>
+
+    <p>
+        <input type="submit" value="Börja spela">
+    </p>
+    </fieldset>
+</form>
+
+{% endblock %}

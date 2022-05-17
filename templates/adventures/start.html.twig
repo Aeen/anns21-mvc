@@ -1,0 +1,58 @@
+{% if rooms is defined %}
+{% if status is defined %}
+            {% set game = status|last %}
+            {% set room = rooms|last %}
+            {% set goforward1 = room.forward1|slice(0, 1) %}
+            {% set goforward2 = room.forward2|slice(0, 1) %}
+            {% set goback = room.back|slice(0, 1) %}
+
+
+            {# <div class="adventure-container">
+                <img src="{{ asset("img/gamemap_start.jpg") }}" alt="Adventure game">
+            </div> #}
+            <div class="adventure-container">
+                <img src="{{ asset(room.image) }}" alt="Adventure game">
+            </div>
+            
+    <p>
+        {{ room.description }}
+
+    </p> 
+
+    <p>
+        Vad vill du göra?
+    </p>
+
+
+<div class="card-container button-play">
+
+        {% if room.back != null %}
+        <a href="{{ path("continue_playing", {'id': goback} ) }}">{{ room.back }}</a>
+        {% endif %}
+ 
+
+        {% if room.forward1 != null %}
+        <a href="{{ path("continue_playing", {'id': goforward1} ) }}">{{ room.forward1 }}</a>
+        {% endif %}
+
+        {% if room.forward2 != null %}
+        <a href="{{ path("continue_playing", {'id': goforward2} ) }}">{{ room.forward2 }}</a>
+        {% endif %}
+
+    <form method="post">
+        {% if room.action1 != null %}
+        <input type="submit" name="action1" value="{{ room.action1 }}">
+        <input type="hidden" name="id" value="{{ game.id }}">
+        {% endif %}
+    </form>
+
+    <form method="post">
+        {% if room.action2 != null %}
+        <input type="submit" name="action2" value="{{ room.action2 }}">
+        <input type="hidden" name="id" value="{{ game.id }}">
+        {% endif %}
+    </form>
+
+    {% endif %}
+    {% endif %}
+</div>

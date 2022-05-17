@@ -1,0 +1,265 @@
+body {
+    display: grid;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+}
+
+header {
+    background: linear-gradient(180deg, #3FA0FF 10%, #FFFFFF 90%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    width: 80vw;
+    border-radius: 15px;
+}
+
+.header-inside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 75vw;
+    padding: 1.5vw 0;
+}
+
+.index-header {
+    height: 100vh;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    background: linear-gradient(360deg, #3FA0FF 10%, #FFFFFF 90%);
+    width: 80vw;
+    border-radius: 15px;
+}
+
+footer img {
+    width: 35px;
+}
+
+footer p {
+    margin: 0;
+    align-self: center;
+}
+
+.footer-inside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 75vw;
+    padding: 1vw 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 5px;
+}
+
+nav {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    color: black;
+    align-self: flex-end;
+}
+
+/* Inserting this collapsed row between two flex items will make 
+* the flex item that comes after it break to a new row */
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+
+.body-container {
+    width: 80vw;
+}
+
+.adventure-container img {
+    display: block;
+    border-radius: 5px;
+    margin: 5px auto;
+    max-width: 70vw;
+    height: 75vh;
+}
+
+.backpack-container {
+    display: flex;
+    max-width: fit-content;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.backpack-container img {
+    max-width: 15vw;
+}
+
+.card-container-play {
+    background-color: #E8EBFD;
+    min-height: 50vh;
+    border-radius: 5px;
+    padding: 1vw 2.5vw;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+nav  li a:hover {
+    margin: 0 0.75vw;
+    color: #F990F9;
+}
+
+nav li a:first-child {
+    margin-left: 0;
+}
+
+nav li a:last-child {
+    margin-right: 0;
+}
+  
+  /* Underline styles */
+nav li a {
+    display: inline-block;
+    position: relative;
+    padding: 0;
+    text-decoration: none;
+    margin: 0 0.75vw;
+    color: black;
+}
+  
+  /* Fade in */
+nav li  a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    opacity: 0;
+    transition: opacity 500ms, transform 500ms;
+  }
+
+    /* Fade in */
+.navbar li  a::after {
+    background-color: #205080;
+  }
+
+.navbar  li a:hover {
+    color: #205080;
+  }
+
+.navbar {
+    color: #102840;
+    font-size: 1.1em;
+}
+
+.navbar a {
+    color: #102840;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar ul {
+    margin: 1vh 0;
+}
+
+nav li a:hover::after,
+a:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+}
+
+  /* Scale from center */
+nav li a::after {
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+  }
+  
+nav  li a:hover::after,
+nav  li a:focus::after {
+    transform: scale(1);
+}
+
+.mepage a {
+    color: #102840;
+}
+
+.card-container {
+    display: grid;
+    justify-content: center;
+}
+
+.progress-container{max-width:250px;height:1.5em;position:relative;background-color:#f1f1f1}
+.progressbar-food{background-color:blue;height:100%;position:absolute;line-height:inherit}
+.progressbar-life{background-color:green;height:100%;position:absolute;line-height:inherit}
+.round-xlarge{border-radius:16px!important}
+
+@media (max-width: 900px) {
+
+    .header-inside {
+        display: grid;
+        width: 90vw;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "p p"
+        "a a";
+    }
+
+    .logo {
+        grid-area: p;
+        justify-self: center;
+        margin: 1vh 0;
+    }
+    
+    nav {
+        grid-area: a;
+        justify-self: center;
+        margin: 1vh 0;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    nav ul {
+        display: grid;
+    }
+
+    .footer-inside {
+        display: grid;
+        width: 90vw;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "p p"
+        "a a";
+    }
+
+    .footer-inside p {
+        grid-area: p;
+        justify-self: center;
+        margin: 1vh 0;
+    }
+    
+    .footer-inside a {
+        grid-area: a;
+        justify-self: center;
+        margin: 1vh 0;
+    }
+    
+    
+}

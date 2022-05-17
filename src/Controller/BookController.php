@@ -114,7 +114,7 @@ class BookController extends AbstractController
         BookRepository $bookRepository,
         int $id
     ): Response {
-        $books = array();
+        
         $books[] = $bookRepository
             ->find($id);
 

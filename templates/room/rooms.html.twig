@@ -1,0 +1,25 @@
+{% extends 'project.html.twig' %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block body %}
+
+<h1>Rooms</h1>
+
+{{ include('./room/navbar.html.twig') }}
+
+
+    <div class="book-container">
+        {% if rooms is defined %}
+            {% for room in rooms %}
+            <a href="{{ path("update_room", {'id': room.id} ) }}">
+                <div class="books">
+                        {{ room.id }}:
+                        {{ room.name }}
+                </div>
+            </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

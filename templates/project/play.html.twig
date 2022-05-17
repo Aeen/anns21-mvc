@@ -1,0 +1,60 @@
+{% extends 'project.html.twig' %}
+
+{% block title %}Adventure game{% endblock %}
+
+{% block body %}
+
+<div class="card-container-play">
+
+    {# <div class="flash-messages-game">
+        {{ include('block/flash-message.html.twig') }}     
+    </div> #}
+
+    {{ include('adventures/start.html.twig') }}
+
+    <div class="card-container"> 
+        {% if status is defined %}
+            {% set game = status|last %}
+            {% set cssStyleWidthLife = 'style="width: ' ~ game.life ~ '%"' %}
+            {% set cssStyleWidthFood = 'style="width: ' ~ game.food ~ '%"' %}
+
+          
+                    Namn: {{ game.name }}
+
+                    <br>
+                    Liv: {{ game.life }}/100
+                    <div class="progress-container round-xlarge">
+                        <div class="progressbar-life round-xlarge" {{ cssStyleWidthLife|raw }} ></div>             
+                    </div>
+
+                    Mat: {{ game.food }}/100
+                    <div class="progress-container round-xlarge">
+                        <div class="progressbar-food round-xlarge" {{ cssStyleWidthFood|raw }} ></div>             
+                    </div>  
+
+                    
+                    <h2>Ryggsäck:</h2>
+                    <div class="backpack-container">
+                    {% if game.banana == 0 %}
+                    <img src="{{ asset("img/banana.png") }}" alt="Banana">
+                    {% endif %}
+
+                    {% if game.snail == 0 %}
+                    <img src="{{ asset("img/snail.png") }}" alt="Snail">
+                    {% endif %}
+
+                    {% if game.potion == 0 %}
+                    <img src="{{ asset("img/potion.png") }}" alt="Potion">
+                    {% endif %}
+
+                    {% if game.keys == 0 %}
+                    <img src="{{ asset("img/key.png") }}" alt="Key">
+                    {% endif %}
+                </div>
+                    <br><br>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
