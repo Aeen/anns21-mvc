@@ -13,7 +13,6 @@ use App\Repository\AdventureRepository;
 use App\Repository\RoomRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Output\NullOutput;
-
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -219,7 +218,7 @@ class ProjectController extends AbstractController
     // ): Response {
     //     $entityManager = $doctrine->getManager();
 
-    //     $playerId = $request->request->get('playerId');
+    //     //$playerId = $request->request->get('playerId');
     //     $action1 = $request->request->get('action1');
     //     $action2 = $request->request->get('action2');
     //     $type = "notice";
@@ -303,7 +302,7 @@ class ProjectController extends AbstractController
     //             if (strpos($action1, "banan") !== false) {
     //                 if ($player->getBanana() != 0) {
     //                     $player->setBanana(0);
-    //                     $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll  
+    //                     $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll
     //                     innan han tar bananerna och går iväg.");
     //                 } else {
     //                     $this->addFlash($type, "Du har inga bananer att kasta!");
@@ -313,8 +312,8 @@ class ProjectController extends AbstractController
     //             if (strpos($action1, "snigel") !== false) {
     //                 if ($player->getSnail() != 0) {
     //                     $player->setSnail(0);
-    //                     $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den 
-    //                     upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
+    //                     $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den
+    //                     upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta
     //                     en snigelmåltid.");
     //                 } else {
     //                     $this->addFlash($type, "Du har inga sniglar att kasta!");
@@ -327,7 +326,7 @@ class ProjectController extends AbstractController
     //                 $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
     //             }
     //             if (strpos($action1, "bläckfisken") !== false) {
-    //                 $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!  
+    //                 $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!
     //                 Du håller på att bli allvarligt skadad.");
     //             }
     //         }
@@ -417,7 +416,7 @@ class ProjectController extends AbstractController
     //             if (strpos($action2, "banan") !== false) {
     //                 if ($player->getBanana() != 0) {
     //                     $player->setBanana(0);
-    //                     $this->addFlash($type, "Du har kastat bananerna åt apan.  
+    //                     $this->addFlash($type, "Du har kastat bananerna åt apan.
     //                     Apan ger dig en smäll innan han tar bananerna och går iväg.");
     //                 } else {
     //                     $this->addFlash($type, "Du har inga fler bananer att kasta!");
@@ -427,8 +426,8 @@ class ProjectController extends AbstractController
     //             if (strpos($action2, "snigel") !== false) {
     //                 if ($player->getSnail() != 0) {
     //                     $player->setSnail(0);
-    //                     $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den   
-    //                     upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
+    //                     $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den
+    //                     upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta
     //                     en snigelmåltid.");
     //                 } else {
     //                     $this->addFlash($type, "Du har inga fler sniglar att kasta!");
@@ -441,7 +440,7 @@ class ProjectController extends AbstractController
     //                 $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
     //             }
     //             if (strpos($action2, "bläckfisken") !== false) {
-    //                 $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo! 
+    //                 $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!
     //                 Du håller på att bli allvarligt skadad.");
     //             }
     //         }
@@ -493,100 +492,66 @@ class ProjectController extends AbstractController
         $player->getHungry(10);
 
 
-            if (strpos($action1, "Plocka") !== false) {
-                if (strpos($action1, "bananerna") !== false) {
-                    if ($player->getBanana() != 1) {
-                        $player->setBanana(1);
-                        $this->addFlash($type, "Bananerna ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Bananerna ligger redan i din ryggsäck!");
-                    }
-                }
-                if (strpos($action1, "snigeln") !== false) {
-                    if ($player->getSnail() != 1) {
-                        $player->setSnail(1);
-                        $this->addFlash($type, "Snigeln ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Snigeln ligger redan i din ryggsäck!");
-                    }
-                }
-                if (strpos($action1, "drycken") !== false) {
-                    if ($player->getPotion() != 1) {
-                        $player->setPotion(1);
-                        $this->addFlash($type, "Drycken ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Drycken ligger redan i din ryggsäck!");
-                    }
-                }
-                if (strpos($action1, "nyckeln") !== false) {
-                    if ($player->getKeys() != 1) {
-                        $player->setKeys(1);
-                        $this->addFlash($type, "Nyckeln ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Nyckeln ligger redan i din ryggsäck!");
-                    }
-                }
-            }
+        if (strpos($action1, "Plocka upp bananerna") !== false) {
+            $player->setBanana(1);
+            $this->addFlash($type, "Bananerna ligger i din ryggsäck!");
+        }
 
-            if (strpos($action1, "Drick") !== false) {
-                if ($player->getPotion() != 1) {
-                    $this->addFlash($type, "Du har ingen dryck att dricka!");
-                } else {
-                    $player->setPotion(0);
-                    $player->setLife(100);
-                    $player->setFood(100);
-                    $this->addFlash($type, "Drycken är nu slut!");
-                }
-            }
+        if (strpos($action1, "Plocka upp snigeln") !== false) {
+            $player->setSnail(1);
+            $this->addFlash($type, "Snigeln ligger i din ryggsäck!");
+        }
 
-            if (strpos($action1, "Ät") !== false) {
-                if ($player->getBanana() != 1) {
-                    $this->addFlash($type, "Du har inga bananer att äta!");
-                } else {
-                    $player->setBanana(0);
-                    $player->eat(40);
-                    $this->addFlash($type, "Bananerna är nu uppätna!");
-                }
-            }
+        if (strpos($action1, "Plocka upp drycken") !== false) {
+            $player->setPotion(1);
+            $this->addFlash($type, "Drycken ligger i din ryggsäck!");
+        }
 
-            if (strpos($action1, "Kasta") !== false) {
-                if (strpos($action1, "banan") !== false) {
-                    if ($player->getBanana() != 0) {
-                        $player->setBanana(0);
-                        $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll  
+        if (strpos($action1, "Plocka upp nyckeln") !== false) {
+            $player->setKeys(1);
+            $this->addFlash($type, "Nyckeln ligger i din ryggsäck!");
+        }
+
+        if (strpos($action1, "Drick drycken") !== false) {
+            $player->setPotion(0);
+            $player->setLife(100);
+            $player->setFood(100);
+            $this->addFlash($type, "Drycken är uppdrucken!");
+        }
+
+        if (strpos($action1, "Ät en banan") !== false) {
+            $player->setBanana(0);
+            $player->eat(40);
+            $this->addFlash($type, "Bananerna är uppätna!");
+        }
+
+        if (strpos($action1, "Kasta en banan") !== false) {
+            $player->setBanana(0);
+            $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll  
                         innan han tar bananerna och går iväg.");
-                    } else {
-                        $this->addFlash($type, "Du har inga bananer att kasta!");
-                    }
-                }
+        }
 
-                if (strpos($action1, "snigel") !== false) {
-                    if ($player->getSnail() != 0) {
-                        $player->setSnail(0);
-                        $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den 
+        if (strpos($action1, "Kasta en snigel") !== false) {
+            $player->setSnail(0);
+            $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den 
                         upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
                         en snigelmåltid.");
-                    } else {
-                        $this->addFlash($type, "Du har inga sniglar att kasta!");
-                    }
-                }
-            }
+        }
 
-            if (strpos($action1, "Slåss") !== false) {
-                if (strpos($action1, "apan") !== false) {
-                    $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
-                }
-                if (strpos($action1, "bläckfisken") !== false) {
-                    $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!  
+        if (strpos($action1, "Slåss mot apan") !== false) {
+            $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
+        }
+
+        if (strpos($action1, "Slåss mot bläckfisken") !== false) {
+            $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!  
                     Du håller på att bli allvarligt skadad.");
-                }
-            }
+        }
 
-            if (strpos($action1, "Lås upp kistan") !== false) {
 
-                if ($player->getKeys() != 1) {
-                    $this->addFlash($type, "Du har ingen nyckel att öpnna kistan med!");
-                } else {
+        if (strpos($action1, "Lås upp kistan") !== false) {
+            if ($player->getKeys() != 1) {
+                $this->addFlash($type, "Du har ingen nyckel att öpnna kistan med!");
+            } else {
                 // tell Doctrine you want to (eventually) save the Product
                 // (no queries yet)
                 $entityManager->persist($player);
@@ -596,101 +561,65 @@ class ProjectController extends AbstractController
                 $id = 12;
 
                 return $this->redirectToRoute('continue_playing', array('playerId' => $playerId, 'id' => $id));
-                }
-
             }
-        
+        }
 
-            if (strpos($action2, "Plocka") !== false) {
-                if (strpos($action2, "bananerna") !== false) {
-                    if ($player->getBanana() != 1) {
-                        $player->setBanana(1);
-                        $this->addFlash($type, "Bananerna ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Bananerna ligger redan i din ryggsäck!");
-                    }
-                }
-                
-                if (strpos($action2, "snigeln") !== false) {
-                    if ($player->getSnail() != 1) {
-                        $player->setSnail(1);
-                        $this->addFlash($type, "Snigeln ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Snigeln ligger redan i din ryggsäck!");
-                    }
-                }
-                if (strpos($action2, "drycken") !== false) {
-                    if ($player->getPotion() != 1) {
-                        $player->setPotion(1);
-                        $this->addFlash($type, "Drycken ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Drycken ligger redan i din ryggsäck!");
-                    }
-                }
-                if (strpos($action2, "nyckeln") !== false) {
-                    if ($player->getKeys() != 1) {
-                        $player->setKeys(1);
-                        $this->addFlash($type, "Nyckeln ligger i din ryggsäck!");
-                    } else {
-                        $this->addFlash($type, "Nyckeln ligger redan i din ryggsäck!");
-                    }
-                }
-            }
 
-            if (strpos($action2, "Drick") !== false) {
-                if ($player->getPotion() != 1) {
-                    $this->addFlash($type, "Du har ingen dryck att dricka!");
-                } else {
-                    $player->setPotion(0);
-                    $player->setLife(100);
-                    $player->setFood(100);
-                    $this->addFlash($type, "Drycken är nu slut!");
-                }
-            }
+        if (strpos($action2, "Plocka upp bananerna") !== false) {
+            $player->setBanana(1);
+            $this->addFlash($type, "Bananerna ligger i din ryggsäck!");
+        }
 
-            if (strpos($action2, "Ät") !== false) {
-                if ($player->getBanana() != 1) {
-                    $this->addFlash($type, "Du har inga bananer att äta!");
-                } else {
-                    $player->setBanana(0);
-                    $player->eat(30);
-                    $this->addFlash($type, "Bananerna är nu uppätna!");
-                }
-            }
+        if (strpos($action2, "Plocka upp snigeln") !== false) {
+            $player->setSnail(1);
+            $this->addFlash($type, "Snigeln ligger i din ryggsäck!");
+        }
 
-            if (strpos($action2, "Kasta") !== false) {
-                if (strpos($action2, "banan") !== false) {
-                    if ($player->getBanana() != 0) {
-                        $player->setBanana(0);
-                        $this->addFlash($type, "Du har kastat bananerna åt apan.  
-                        Apan ger dig en smäll innan han tar bananerna och går iväg.");
-                    } else {
-                        $this->addFlash($type, "Du har inga fler bananer att kasta!");
-                    }
-                }
+        if (strpos($action2, "Plocka upp drycken") !== false) {
+            $player->setPotion(1);
+            $this->addFlash($type, "Drycken ligger i din ryggsäck!");
+        }
 
-                if (strpos($action2, "snigel") !== false) {
-                    if ($player->getSnail() != 0) {
-                        $player->setSnail(0);
-                        $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den   
-                        upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
-                        en snigelmåltid.");
-                    } else {
-                        $this->addFlash($type, "Du har inga fler sniglar att kasta!");
-                    }
-                }
-            }
+        if (strpos($action2, "Plocka upp nyckeln") !== false) {
+            $player->setKeys(1);
+            $this->addFlash($type, "Nyckeln ligger i din ryggsäck!");
+        }
 
-            if (strpos($action2, "Slåss") !== false) {
-                if (strpos($action2, "apan") !== false) {
-                    $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
-                }
-                if (strpos($action2, "bläckfisken") !== false) {
-                    $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo! 
-                    Du håller på att bli allvarligt skadad.");
-                }
-            }
-        
+        if (strpos($action2, "Drick drycken") !== false) {
+            $player->setPotion(0);
+            $player->setLife(100);
+            $player->setFood(100);
+            $this->addFlash($type, "Drycken är uppdrucken!");
+        }
+
+        if (strpos($action2, "Ät en banan") !== false) {
+            $player->setBanana(0);
+            $player->eat(40);
+            $this->addFlash($type, "Bananerna är uppätna!");
+        }
+
+        if (strpos($action2, "Kasta en banan") !== false) {
+            $player->setBanana(0);
+            $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll  
+                innan han tar bananerna och går iväg.");
+        }
+
+        if (strpos($action2, "Kasta en snigel") !== false) {
+            $player->setSnail(0);
+            $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den 
+                upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
+                en snigelmåltid.");
+        }
+
+        if (strpos($action2, "Slåss mot apan") !== false) {
+            $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
+        }
+
+        if (strpos($action2, "Slåss mot bläckfisken") !== false) {
+            $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!  
+            Du håller på att bli allvarligt skadad.");
+        }
+
 
 
 
@@ -704,7 +633,7 @@ class ProjectController extends AbstractController
         return $this->redirectToRoute('continue_playing', array('playerId' => $playerId, 'id' => $id));
     }
 
-        /**
+    /**
      * @Route(
      *      "/proj/restart/{playerId}",
      *      name="restart-game"
