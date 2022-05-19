@@ -88,7 +88,7 @@ class ProjectController extends AbstractController
 
         $name = $request->request->get('name');
 
-        var_dump($name);
+        //var_dump($name);
 
         $adventure = new Adventure();
         $adventure->setName($name);
@@ -181,13 +181,13 @@ class ProjectController extends AbstractController
         }
 
         if ($adventure->getLife() < 1) {
-            return $this->redirectToRoute('restart-game', array('playerId' => $playerId));
             $this->addFlash($type, "Spelet har börjat om eftersom ditt liv tog slut!");
+            return $this->redirectToRoute('restart-game', array('playerId' => $playerId));
         }
 
         if ($adventure->getFood() < 1) {
-            return $this->redirectToRoute('restart-game', array('playerId' => $playerId));
             $this->addFlash($type, "Spelet har börjat om eftersom du svalt ihjäl!");
+            return $this->redirectToRoute('restart-game', array('playerId' => $playerId));
         }
 
         // tell Doctrine you want to (eventually) save the Product
@@ -230,7 +230,7 @@ class ProjectController extends AbstractController
         ->find($playerId);
 
 
-        var_dump($player);
+        //var_dump($player);
 
         if (!$playerId) {
             throw $this->createNotFoundException(
@@ -466,7 +466,6 @@ class ProjectController extends AbstractController
      */
     public function restartGame(
         ManagerRegistry $doctrine,
-        Request $request,
         int $playerId
     ): Response {
         $entityManager = $doctrine->getManager();
