@@ -63,6 +63,24 @@ class Adventure
         return $this;
     }
 
+
+    public function eat(int $food): self
+    {
+        if ($this->food + $food > 100) {
+            $this->food = 100;
+        } else {
+            $this->food = $this->food + $food;
+        }
+        return $this;
+    }
+
+    public function fight(int $life): self
+    {
+        $this->life = $this->life - $life;
+
+        return $this;
+    }
+
     public function getFood(): ?int
     {
         return $this->food;
@@ -71,6 +89,13 @@ class Adventure
     public function setFood(int $food): self
     {
         $this->food = $food;
+
+        return $this;
+    }
+
+    public function getHungry(int $food): self
+    {
+        $this->food = $this->food - $food;
 
         return $this;
     }

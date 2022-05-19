@@ -1,19 +1,21 @@
 {% if rooms is defined %}
 {% if status is defined %}
             {% set game = status|last %}
+            {% set player = game.id %}
             {% set room = rooms|last %}
-            {% set goforward1 = room.forward1|slice(0, 1) %}
-            {% set goforward2 = room.forward2|slice(0, 1) %}
-            {% set goback = room.back|slice(0, 1) %}
-
+            {% set goforward1 = room.forward1| split(':') | first %}
+            {% set goforward2 = room.forward2| split(':') | first %}
+            {% set goback = room.back| split(':') | first %}
 
             {# <div class="adventure-container">
                 <img src="{{ asset("img/gamemap_start.jpg") }}" alt="Adventure game">
             </div> #}
+            <a href="{{ path("restart-game", {'playerId': player} ) }}">Starta om spelet</a> <br>
+
             <div class="adventure-container">
                 <img src="{{ asset(room.image) }}" alt="Adventure game">
             </div>
-            
+
     <p>
         {{ room.description }}
 
@@ -23,33 +25,36 @@
         Vad vill du göra?
     </p>
 
+    <div class="flash-messages-game">
+        {{ include('block/flash-message.html.twig') }}     
+    </div>
 
 <div class="card-container button-play">
 
         {% if room.back != null %}
-        <a href="{{ path("continue_playing", {'id': goback} ) }}">{{ room.back }}</a>
+        <a href="{{ path("continue_playing", {'playerId': player, 'id': goback} ) }}">{{ room.back| split(':') | last }}</a>
         {% endif %}
  
 
         {% if room.forward1 != null %}
-        <a href="{{ path("continue_playing", {'id': goforward1} ) }}">{{ room.forward1 }}</a>
+        <a href="{{ path("continue_playing", {'playerId': player, 'id': goforward1} ) }}">{{ room.forward1| split(':') | last }}</a>
         {% endif %}
 
         {% if room.forward2 != null %}
-        <a href="{{ path("continue_playing", {'id': goforward2} ) }}">{{ room.forward2 }}</a>
+        <a href="{{ path("continue_playing", {'playerId': player, 'id': goforward2} ) }}">{{ room.forward2| split(':') | last }}</a>
         {% endif %}
 
     <form method="post">
         {% if room.action1 != null %}
         <input type="submit" name="action1" value="{{ room.action1 }}">
-        <input type="hidden" name="id" value="{{ game.id }}">
+        <input type="hidden" name="playerId" value="{{ player }}">
         {% endif %}
     </form>
 
     <form method="post">
         {% if room.action2 != null %}
         <input type="submit" name="action2" value="{{ room.action2 }}">
-        <input type="hidden" name="id" value="{{ game.id }}">
+        <input type="hidden" name="playerId" value="{{ player }}">
         {% endif %}
     </form>
 

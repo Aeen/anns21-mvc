@@ -1,0 +1,24 @@
+{% extends 'project.html.twig' %}
+
+{% block title %}Adventures{% endblock %}
+
+{% block body %}
+
+<h1>Adventures</h1>
+
+{{ include('./room/navbar.html.twig') }}
+
+
+    <div class="book-container">
+        {% if games is defined %}
+            {% for game in games %}
+                <div class="books">
+                    {{ game.id }}:
+                    {{ game.name }}
+                    <a href="{{ path("delete_adventure", {'id': game.id} ) }}">Radera</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

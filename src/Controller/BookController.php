@@ -114,7 +114,7 @@ class BookController extends AbstractController
         BookRepository $bookRepository,
         int $id
     ): Response {
-        
+        $books = array();
         $books[] = $bookRepository
             ->find($id);
 
@@ -217,12 +217,6 @@ class BookController extends AbstractController
 
         $pictureName = $book->getPicture();
         $book->setPictureEnd($pictureName);
-
-        if (!$id) {
-            throw $this->createNotFoundException(
-                'No book found for id ' . $id
-            );
-        }
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)

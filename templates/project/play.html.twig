@@ -6,14 +6,11 @@
 
 <div class="card-container-play">
 
-    {# <div class="flash-messages-game">
-        {{ include('block/flash-message.html.twig') }}     
-    </div> #}
-
     {{ include('adventures/start.html.twig') }}
 
     <div class="card-container"> 
         {% if status is defined %}
+            {% set one = 1 %}
             {% set game = status|last %}
             {% set cssStyleWidthLife = 'style="width: ' ~ game.life ~ '%"' %}
             {% set cssStyleWidthFood = 'style="width: ' ~ game.food ~ '%"' %}
@@ -31,30 +28,44 @@
                     <div class="progress-container round-xlarge">
                         <div class="progressbar-food round-xlarge" {{ cssStyleWidthFood|raw }} ></div>             
                     </div>  
-
-                    
+                    {{ dump(game) }}
                     <h2>Ryggsäck:</h2>
                     <div class="backpack-container">
-                    {% if game.banana == 0 %}
+                    {% if game.banana != 0 %}
                     <img src="{{ asset("img/banana.png") }}" alt="Banana">
                     {% endif %}
 
-                    {% if game.snail == 0 %}
+                    {% if game.snail == one %}
                     <img src="{{ asset("img/snail.png") }}" alt="Snail">
                     {% endif %}
 
-                    {% if game.potion == 0 %}
+                    {% if game.potion == one %}
                     <img src="{{ asset("img/potion.png") }}" alt="Potion">
                     {% endif %}
 
-                    {% if game.keys == 0 %}
+                    {% if game.keys == one %}
                     <img src="{{ asset("img/key.png") }}" alt="Key">
                     {% endif %}
                 </div>
                     <br><br>
         {% endif %}
     </div>
+    <button onclick="myFunction()">Fusk</button>
 
+    <div id="myDIV" style="display: none">
+        Snabbaste sättet att klara spelet: <br><br>
+        1. Gå till Living Island<br>
+        2. Plocka upp drycken<br>
+        3. Gå till Lost Island<br>
+        4. Ta båten till Octoland<br>
+        5. Möt bläckfisken<br>
+        6. Spring till bläckfiskens gömställe<br>
+        7. Drick drycken<br>
+        8. Plocka upp nyckeln<br>
+        9. Ta båten till Treasure Island<br>
+        10. Lås upp kistan
+
+    </div>
 </div>
 
 {% endblock %}

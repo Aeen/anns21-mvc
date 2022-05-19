@@ -4,10 +4,18 @@
 
 {% block body %}
 
-
+<h1>Äventyrsspel</h1>
 <p>
-    Project about
+    Mitt projekt är ett äventyrsspel, som handlar om en flicka som hamnat på Treasure Island vid en låst kista. 
+    För att vinna behöver flickan ta sig runt ön, och beroende på vilken väg hon väljer behöver hon plocka upp olika 
+    saker för att ha tillräckligt med liv och mat för att överleva attacker och ta sig i mål. Spelet består av 
+    fem "rum", eller önamn. Där kan man ta sig vidare till näsa del av spelet, utföra en handling, eller gå tillbaka.
+</p> 
 
-    Här ska en länk till reset databas finnas.
-</p>
+<a href="#">Phpdoc</a><br>
+<a href="{{ asset("../docs/metrics") }}">Phpmetrics</a><br>
+<a href="https://github.com/Aeen/anns21-mvc">GitHub</a><br>
+<a href="https://scrutinizer-ci.com/g/Aeen/anns21-mvc/inspections">Scrutinizer</a><br><br>
+<a href="{{ path("reset-database") }}">Återställ databas</a>
+
 {% endblock %}

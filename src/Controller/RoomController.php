@@ -13,8 +13,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class RoomController extends AbstractController
 {
-
-
     /**
      * @Route(
      *      "/room/create",
@@ -101,7 +99,7 @@ class RoomController extends AbstractController
         RoomRepository $roomRepository,
         int $id
     ): Response {
-        
+        $rooms = array();
         $rooms[] = $roomRepository
             ->find($id);
 
