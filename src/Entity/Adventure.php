@@ -161,6 +161,77 @@ class Adventure
         if ($id === 10) {
             $this->fight(40);
         }
+    }
 
+    public function pickUpStuff(string $action): string
+    {
+        if (strpos($action, "Plocka upp bananerna") !== false) {
+            $this->setBanana(1);
+            return "Bananerna ligger i din ryggsäck!";
+        }
+
+        if (strpos($action, "Plocka upp snigeln") !== false) {
+            $this->setSnail(1);
+            return "Snigeln ligger i din ryggsäck!";
+        }
+
+        if (strpos($action, "Plocka upp drycken") !== false) {
+            $this->setPotion(1);
+            return "Drycken ligger i din ryggsäck!";
+        }
+
+        if (strpos($action, "Plocka upp nyckeln") !== false) {
+            $this->setKeys(1);
+            return "Nyckeln ligger i din ryggsäck!";
+        }
+
+        return "";
+    }
+
+    public function throwStuff(string $action): string
+    {
+        if (strpos($action, "Kasta en banan") !== false) {
+            $this->setBanana(0);
+            return "Du har kastat bananerna åt apan. Apan ger dig en smäll  
+                        innan han tar bananerna och går iväg.";
+        }
+
+        if (strpos($action, "Kasta en snigel") !== false) {
+            $this->setSnail(0);
+            return "Bläckfisken kramar om dig med alla sina armar innan den 
+                        upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
+                        en snigelmåltid.";
+        }
+        return "";
+    }
+
+    public function drinkEat(string $action): string
+    {
+        if (strpos($action, "Drick drycken") !== false) {
+            $this->setPotion(0);
+            $this->setLife(100);
+            $this->setFood(100);
+            return "Drycken är uppdrucken!";
+        }
+
+        if (strpos($action, "Ät en banan") !== false) {
+            $this->setBanana(0);
+            $this->eat(40);
+            return "Bananerna är uppätna!";
+        }
+        return "";
+    }
+
+    public function fighting(string $action): string
+    {
+        if (strpos($action, "Slåss mot apan") !== false) {
+            return "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.";
+        }
+
+        if (strpos($action, "Slåss mot bläckfisken") !== false) {
+            return "Bläckfisken ger sig på dig för att skydda sitt bo!  
+            Du håller på att bli allvarligt skadad.";
+        }
+        return "";
     }
 }

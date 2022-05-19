@@ -210,8 +210,8 @@ class ProjectController extends AbstractController
         $entityManager = $doctrine->getManager();
 
         //$playerId = $request->request->get('playerId');
-        $action1 = $request->request->get('action1');
-        $action2 = $request->request->get('action2');
+        $action1 = $request->request->get('action1') ?? "";
+        $action2 = $request->request->get('action2') ?? "";
         $type = "notice";
 
 
@@ -231,38 +231,15 @@ class ProjectController extends AbstractController
         $player->getHungry(10);
 
 
-        if (strpos($action1, "Plocka upp bananerna") !== false) {
-            $player->setBanana(1);
-            $this->addFlash($type, "Bananerna ligger i din ryggsäck!");
-        }
+        $message1 = $player->pickUpStuff($action1);
+        $this->addFlash($type, $message1);
+        $message2 = $player->throwStuff($action1);
+        $this->addFlash($type, $message2);
 
-        if (strpos($action1, "Plocka upp snigeln") !== false) {
-            $player->setSnail(1);
-            $this->addFlash($type, "Snigeln ligger i din ryggsäck!");
-        }
-
-        if (strpos($action1, "Plocka upp drycken") !== false) {
-            $player->setPotion(1);
-            $this->addFlash($type, "Drycken ligger i din ryggsäck!");
-        }
-
-        if (strpos($action1, "Plocka upp nyckeln") !== false) {
-            $player->setKeys(1);
-            $this->addFlash($type, "Nyckeln ligger i din ryggsäck!");
-        }
-
-        if (strpos($action1, "Kasta en banan") !== false) {
-            $player->setBanana(0);
-            $this->addFlash($type, "Du har kastat bananerna åt apan. Apan ger dig en smäll  
-                        innan han tar bananerna och går iväg.");
-        }
-
-        if (strpos($action1, "Kasta en snigel") !== false) {
-            $player->setSnail(0);
-            $this->addFlash($type, "Bläckfisken kramar om dig med alla sina armar innan den 
-                        upptäcker snigeln du kastat åt honom. Bläckfisken släpper dig för att ånjuta   
-                        en snigelmåltid.");
-        }
+        $message3 = $player->drinkEat($action2);
+        $this->addFlash($type, $message3);
+        $message4 = $player->fighting($action2);
+        $this->addFlash($type, $message4);
 
 
         if (strpos($action1, "Lås upp kistan") !== false) {
@@ -280,31 +257,6 @@ class ProjectController extends AbstractController
                 return $this->redirectToRoute('continue_playing', array('playerId' => $playerId, 'id' => $id));
             }
         }
-
-        if (strpos($action2, "Drick drycken") !== false) {
-            $player->setPotion(0);
-            $player->setLife(100);
-            $player->setFood(100);
-            $this->addFlash($type, "Drycken är uppdrucken!");
-        }
-
-        if (strpos($action2, "Ät en banan") !== false) {
-            $player->setBanana(0);
-            $player->eat(40);
-            $this->addFlash($type, "Bananerna är uppätna!");
-        }
-
-        if (strpos($action2, "Slåss mot apan") !== false) {
-            $this->addFlash($type, "Apan hoppar på dig för att ge igen! Du håller på att bli skadad.");
-        }
-
-        if (strpos($action2, "Slåss mot bläckfisken") !== false) {
-            $this->addFlash($type, "Bläckfisken ger sig på dig för att skydda sitt bo!  
-            Du håller på att bli allvarligt skadad.");
-        }
-
-
-
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
