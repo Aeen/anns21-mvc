@@ -147,4 +147,20 @@ class Adventure
 
         return $this;
     }
+
+    public function reduceLife(int $id): void
+    {
+        if ($id === 3) {
+            $this->fight(25);
+        }
+
+        if ($id === 9) {
+            $this->fight(40);
+        }
+
+        if ($id === 10) {
+            $this->fight(40);
+        }
+
+    }
 }

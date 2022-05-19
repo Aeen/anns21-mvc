@@ -30,6 +30,7 @@
         <exclude>
             <directory suffix=".php">src/Controller</directory>
             <directory suffix=".php">src/Entity</directory>
+            <directory suffix=".php">src/Dice</directory>
             <directory suffix=".php">src/Repository</directory>
             <file>src/Kernel.php</file>
         </exclude>

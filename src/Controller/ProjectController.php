@@ -167,17 +167,7 @@ class ProjectController extends AbstractController
             );
         }
 
-        if ($id === 3) {
-            $adventure->fight(25);
-        }
-
-        if ($id === 9) {
-            $adventure->fight(40);
-        }
-
-        if ($id === 10) {
-            $adventure->fight(40);
-        }
+        $adventure->reduceLife($id);
 
         if ($adventure->getLife() < 1) {
             $this->addFlash($type, "Spelet har börjat om eftersom ditt liv tog slut!");
