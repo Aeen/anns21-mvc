@@ -12,10 +12,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\AdventureRepository;
 use App\Repository\RoomRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 class ProjectController extends AbstractController
 {
@@ -38,24 +34,22 @@ class ProjectController extends AbstractController
     /**
     * @Route("/proj/reset", name="reset-database")
     */
-    public function resetDatabase(KernelInterface $kernel): Response
+    public function resetDatabase(): Response
     {
-        $application = new Application($kernel);
-        $application->setAutoExit(false);
-
-        $input = new ArrayInput([
-            'command' => 'sqlite3 var/data.db < var/backup.sql'
-        ]);
-
-        $output = new NullOutput();
-        $application->run($input, $output);
+        // Store the path of source file
+        $source = (dirname(__DIR__) . '/../var/backup.db');
 
 
-        return new Response("");
+        // Store the path of destination file
+        $destination = (dirname(__DIR__) . '/../var/data.db');
 
-        //return $this->redirectToRoute('project_about');
+        if (!copy($source, $destination)) {
+            echo "File can't be copied! \n";
+        } else {
+            echo "File has been copied! \n";
+        }
 
-        //return $this->redirectToRoute('project_about')->with(new Response, '');
+        return $this->redirectToRoute('project_about');
     }
 
 

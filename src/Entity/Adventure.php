@@ -63,7 +63,13 @@ class Adventure
         return $this;
     }
 
-
+    /**
+     * Function that increases the food level.
+     *
+     * @param int $food Food to plus.
+     *
+     * @return self
+     */
     public function eat(int $food): self
     {
         if ($this->food + $food > 100) {
@@ -93,6 +99,13 @@ class Adventure
         return $this;
     }
 
+    /**
+     * Function that reduces the food level.
+     *
+     * @param int $food Food to reduce.
+     *
+     * @return self
+     */
     public function getHungry(int $food): self
     {
         $this->food = $this->food - $food;
@@ -148,6 +161,14 @@ class Adventure
         return $this;
     }
 
+    /**
+     * Function that takes life depending on what
+     * room that was entered.
+     *
+     * @param int $id Roomnumber.
+     *
+     * @return void
+     */
     public function reduceLife(int $id): void
     {
         if ($id === 3) {
@@ -163,6 +184,14 @@ class Adventure
         }
     }
 
+    /**
+     * Function that sets the picked up stuff, and returns
+     * a message of what has been done.
+     *
+     * @param string $action Word to lookup.
+     *
+     * @return string
+     */
     public function pickUpStuff(string $action): string
     {
         if (strpos($action, "Plocka upp bananerna") !== false) {
@@ -188,6 +217,14 @@ class Adventure
         return "";
     }
 
+    /**
+     * Function that takes the thrown stuff away from the
+     * backpack, and returns a message of what happened.
+     *
+     * @param string $action Word to lookup.
+     *
+     * @return string
+     */
     public function throwStuff(string $action): string
     {
         if (strpos($action, "Kasta en banan") !== false) {
@@ -205,6 +242,14 @@ class Adventure
         return "";
     }
 
+    /**
+     * Function that gives lives or/and food
+     * and returns a message.
+     *
+     * @param string $action Word to lookup.
+     *
+     * @return string
+     */
     public function drinkEat(string $action): string
     {
         if (strpos($action, "Drick drycken") !== false) {
@@ -222,6 +267,15 @@ class Adventure
         return "";
     }
 
+    /**
+     * Function that returns a message depending on
+     * if it was the monkey och octopus that
+     * was fighting back.
+     *
+     * @param string $action Word to lookup.
+     *
+     * @return string
+     */
     public function fighting(string $action): string
     {
         if (strpos($action, "Slåss mot apan") !== false) {
