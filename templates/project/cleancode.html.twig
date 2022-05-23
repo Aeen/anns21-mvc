@@ -1,0 +1,78 @@
+{% extends 'project.html.twig' %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+
+<h2>Clean Code</h2>
+
+<p>
+    Vad är snygg kod? För mig är snygg kod, kod som är lättförestålig. Det kan vara att klasser, variabler och funktioner har 
+    namn som är vettiga, som beskriver vad det är. Att tänka på kan vara att försöka undvika förkortningar, om det inte är en 
+    vedertagen förkortning. Då är det lätt att förstå vad klassen innehåller, eller vad funktionen gör. Något som också gör koden 
+    lättare att förstå och felsöka, är att dela upp koden i flera funktioner/klasser så att den har EN uppgift. 
+</p>
+
+<p>
+    Något som är värt att tänka på är att göra funktioner på ett sådant sätt att de kan användas i flera sammanhang, i stället 
+    för att ha fyra snarlika funktioner där koden i princip är duplicerad, så är återanvändbar kod bra. Likadant om klasser är 
+    väldigt lika, då är det all idé att låta klasserna ärva gemensamma egenskaper och funtkioner från en basklass.
+</p>
+
+<p>
+    För mycket kommentarer i koden, anser jag är onödigt, åtminstone om koden är som jag beskrev ovan. Beskrivande namn, korta 
+    självförklarande funktioner. Det är också mycket enklare att läsa koden om den är rätt indenterad och om det finns luft i 
+    koden. Även om man är konsekvent med att använda måsvingar som exempel, även om det i vissa fall är optionellt. Det gör det 
+    så mycket tydligare. 
+</p>
+
+<p>
+    Om koden inte går att skriva på ett självförklarande sätt, kan en kort, koncis, beskrivande kommentar vara guld värd. 
+    Docblock kommentarer om förklaringar vad parametrar förväntas innehålla, och vad funktionen ska returnera kan vara bra. I 
+    övrigt bör man fundera på om namnen man valt, och sättet man skriver på, skulle vara föreståligt för en annan prgrammerare, 
+    eller för mig själv om ett år. På så vis kan konstanter vara bra att använda. I stället för att kontrollera om en variabel 
+    exempelvis är 1 ($user→gender == 1), kan man ha en konstant (MALE = 1), det blir en aning mer lättföreståligt: 
+    ($user→gender == MALE). 
+</p>
+
+<p>
+    För komplex kod (detta är något jag själv verkligen måste öva på) är inte bra. Men som nybörjare, har det för mig känt mycket 
+    lättare att skriva så. Antar att det är en vana. Men, det är inte lätt att komma tillbaka till och förstå, underhålla eller 
+    felsöka. Att därför undvika för många if-satser i if-satser, är något väl värt att foksera på. 
+</p>
+
+<p>
+    Död kod, kommenterad kod. Att kommentera kodsnuttar under utveckling, är något jag gör hela tiden. Men när man är klar, finns 
+    det ingen anledning att ha kvar den kommenterade koden. Den används inte, och den tar bara plats. Likaså är död kod. Kanske 
+    blir någon kod-del död när man ändrar om. Se till att få bort det. Det är bara förvirrande, och försvårar vid felsökning om 
+    där finns kod som inte på något vis används.
+</p>
+
+<p>
+    För att få hjälp att se saker i sin kod, kan några verktyg vara värda att använda. Det är lätt att missa död kod, eller andra 
+    slarvfel, och därför är all extra hjälp värd att få. Verktygen uppmärksammar potentiella problem och låter mig se saker i min 
+    egen kod som man till slut blir för blind för att se. Här kommer en kort beskrivning av de verktyg jag tagit hjälp av:
+</p>
+
+<p>
+    PHPCS är ett verktyg som hjälper till att upptäcka violations mot fördefinierade kodningsstandarder. 
+</p>
+
+<p>
+    PHPMD letar efter flera potentiella problem. Dessa problem kan vara: möjliga buggar, oanvända parametrar, metoder, egenskaper 
+    eller exempelvis komplexa uttryck.
+</p>
+
+<p>
+    PHPStan skannar hela din kodbas och letar efter både uppenbara och knepiga buggar. 
+</p>
+
+<p>
+    Scrutinizer samlar in, analyserar, visualiserar och rapporterar data från mitt github-repo.
+</p>
+
+<p>
+    Tillsammans har dessa fyra verktyg fått mig att se på min kod ur ett annat perspektiv.
+</p>
+
+{% endblock %}

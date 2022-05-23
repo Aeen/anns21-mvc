@@ -24,6 +24,14 @@ class ProjectController extends AbstractController
     }
 
     /**
+     * @Route("/proj/cleancode", name="cleancode")
+     */
+    public function cleancode(): Response
+    {
+        return $this->render('project\cleancode.html.twig');
+    }
+
+    /**
      * @Route("/proj/about", name="project_about")
      */
     public function about(): Response
