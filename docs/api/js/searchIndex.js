@@ -691,6 +691,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjectController.html#method_project"
         },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Acleancode\u0028\u0029",
+            "name": "cleancode",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectController.html#method_cleancode"
+        },                {
             "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aabout\u0028\u0029",
             "name": "about",
             "summary": "",
