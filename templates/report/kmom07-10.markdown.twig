@@ -1,5 +1,80 @@
 ## Kmom07/10 ##
 
-### Rubrik ###
+### Krav 1-3 ###
+#### Projektfokus ####
+Jag valde Äventyrsspel som projektfokus. Jag skapade flera olika bilder, som representerar olika rum och handlingar. Spelet 
+börjar med att figuren står vid en låst kista, och där en text beskriver vad spelet går ut på. Där kan man välja åt vilket håll 
+man vill gå åt. Beroende på vilken rum man befinner sig i, finns olika alternativ till hur man kan agera. Det kan vara att plocka 
+upp något, äta något, kasta något osv. Där finns också möjlighet att välja åt vilket håll man vill fortsätta att gå på. Varje 
+gång man väljer en väg eller en handling, kommer man till en ny bild, eller till samma men med uppdaterat liv, mat, ryggsäck 
+eller så. För att ta sig i mål, behöver man agera olika beroende på vilken väg man väljer, eftersom det krävs att man har liv 
+eller mat för att inte "dö". Då börjar spelet om.
 
-Skriv din text här...
+Spelet är inte hårdkodat, utan varje rum har definierade vägar i databasen, och beroende på vilket rum som visas, så visas de 
+vägar och handlingar som är definierade för rummet. Man kan alltså navigera mellan rummen, och även hitta något som är gömt.
+
+#### Struktur och innehåll ####
+Det finns en landningssida på routen /proj. Där står inte så mycket, utan det är egentligen bara en "bas", och utifrån den kan 
+man trycka sig vidare till de andra sidorna. Det finns en about-sida där det finns länk till phpdoc, phpmetrics, Github repot, 
+Scrutinizer och en länk för reset av databasen. Där finns även ett textstycke om projektfokuset, och om hur jag arbetat med 
+kodkvalitén.
+
+#### Databas med ORM ####
+Det finns en databas med ORM. Adventure och Room är kopplat till detta projektet. Room innehåller information om varje rum och 
+dess handlingar. Adventure innehåller information om varje spelomgång, med spelarens namn, hur mycket liv/mat spelaren har, vad 
+ryggsäcken innehåller osv. En länk för att återställa databasen till valt läge finns under sidan about.
+
+#### Utseende och användbarhet ####
+Utseendet och stilen skiljer sig från min report-sida. Jag valde att inte lägga jättemycket tid på denna del, men ändå så att det 
+är en klar skillnad i hur sidan ser ut. Jag tycker att den känns lätt att använda. Det finns en meny med länkar till relevanta 
+sidor, och spelet känns överskådligt och självbeskrivande.
+
+#### Kodstil ####
+Min kod passerar phpcs utan anmärkningar.
+
+#### Linters ####
+Min kod passerar både phpmd och phpstan utan anmärkningar.
+
+#### Enhetstestning och Kodtäckning ####
+Efter att ha exkluderat kod för övningar, kategorierna: Controller, Entity, Repository och filen Kernel.php så uppgår 
+kodtäckningen till 85%.
+
+#### Dokumentation ####
+Jag har skrivit in DocBlock kommentarer på de delar jag själv skrivit. Jag har alltså inte kommenterat exempelvis getters och 
+setters som autogenererats. Länk finns på about-sidan.
+
+#### Metrics ####
+PhpMetrics rapport har genererats och finns länkat på about-sidan.
+
+#### Git repo och GitHub/Lab ####
+Git repo finns. README.md fil finns med kortfattad information. Länk finns på about-sidan.
+
+#### Scrutinizer ####
+Repot är kopplat till Scrutinizer, och länk finns på about-sidan.
+
+
+
+### Krav 4 ###
+Det finns en route /proj/cleancode där jag valde att presentera det i artikel-format (A). Länk finns på about-sidan. Jag 
+beskriver konceptet snygg kod och hur jag tolkar det. Det finns beskrivningar och exempel på verktyg som kan hjälpa en att få 
+ornding på koden. Jag ger även exempel på hur man skriva för att det ska uppfattas som mer föreståligt.
+
+
+
+### Genomförande ###
+Det tog mig ett bra tag, någon dag faktiskt, att egentligen bestämma mig för vilket projektfokus jag skulle välja. Jag valde 
+mellan äventyrsspel och kortspel. För mig tog detta projektet lång tid. Dels på grund av att jag flera gånger gick mellan valet 
+av kortspel och äventyrsspel, men även att jag hade svårt att strukturera upp det. När jag väl kom in i det, och hade fått upp en 
+"bas-sida" för spelet, och min struktur där, så flöt det på bra och kändes roligt. Att återställa databasen var en utmaning. Jag 
+letade länge efter alternativ och läste och läste. Jag valde till slut att helt enkelt kopiera databasen och sen kopiera över den 
+när man trycker på länken för en reset. På så vis återgår databasen till den tidpunkt för när jag tog en kopia. Jag hade önskat 
+att fenomenet åtminstone kortfattat diskuterats på någon genomgång. Med tanke på tiden man har på sig, så anser jag att det är 
+ett rimligt projekt.
+
+
+
+### Tankar om kursen ###
+Jag tycker att kursen har varit rolig och givande. Jag uppskattar att kursen delvis revideras efter hur den uppfattas av oss 
+elever, men jag hade ändå uppskattat om kommande kmom hade släppts innan måndagsmorgonen. Kursen som enskild vet jag inte om jag 
+skulle rekommendera, men kurspaketet jag läser har jag redan rekommenderat för vänner som dessutom sökt den inför kommande höst. 
+Jag ger kursen betyget 8.
