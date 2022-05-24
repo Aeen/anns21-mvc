@@ -10,6 +10,8 @@
             {# <div class="adventure-container">
                 <img src="{{ asset("img/gamemap_start.jpg") }}" alt="Adventure game">
             </div> #}
+            {{ game.name }}
+<br>
             <a href="{{ path("restart-game", {'playerId': player} ) }}">Starta om spelet</a> <br>
 
             <div class="adventure-container">
@@ -35,7 +37,6 @@
         <a href="{{ path("continue_playing", {'playerId': player, 'id': goback} ) }}">{{ room.back| split(':') | last }}</a>
         {% endif %}
  
-
         {% if room.forward1 != null %}
         <a href="{{ path("continue_playing", {'playerId': player, 'id': goforward1} ) }}">{{ room.forward1| split(':') | last }}</a>
         {% endif %}

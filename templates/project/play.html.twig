@@ -14,11 +14,7 @@
             {% set game = status|last %}
             {% set cssStyleWidthLife = 'style="width: ' ~ game.life ~ '%"' %}
             {% set cssStyleWidthFood = 'style="width: ' ~ game.food ~ '%"' %}
-
-          
-                    Namn: {{ game.name }}
-
-                    <br>
+<br>
                     Liv: {{ game.life }}/100
                     <div class="progress-container round-xlarge">
                         <div class="progressbar-life round-xlarge" {{ cssStyleWidthLife|raw }} ></div>             
@@ -28,7 +24,8 @@
                     <div class="progress-container round-xlarge">
                         <div class="progressbar-food round-xlarge" {{ cssStyleWidthFood|raw }} ></div>             
                     </div>  
-                    {{ dump(game) }}
+                    <br>
+                    {# {{ dump(game) }} #}
                     <h2>Ryggsäck:</h2>
                     <div class="backpack-container">
                     {% if game.banana != 0 %}

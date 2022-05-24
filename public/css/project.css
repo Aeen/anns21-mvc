@@ -80,6 +80,9 @@ nav {
 
 .body-container {
     width: 78vw;
+    padding: 1vw;
+    background-color: #E8EBFD;
+    border-radius: 5px;
 }
 
 .adventure-container img {
@@ -97,6 +100,14 @@ nav {
     border: 1px solid black;
     border-radius: 5px;
     margin: 5px;
+}
+
+.button-play a {
+    padding: 2.5px 0;
+}
+
+.button-play form {
+    padding: 2.5px 0;
 }
 
 .backpack-container img {
